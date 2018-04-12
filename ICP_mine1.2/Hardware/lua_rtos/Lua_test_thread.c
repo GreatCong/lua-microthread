@@ -116,7 +116,7 @@ void mach_init() {
 }
 //add by lcj end
 
-void user_init(void) {
+void lua_app_main(void) {
 
 	pthread_attr_t attr;
 	pthread_t thread;

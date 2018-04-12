@@ -376,6 +376,8 @@ typedef struct tskTaskControlBlock
 		* is received
 		*/
 		uint32_t signaled;
+		
+		int thread_stackNum;
 		//add by lcj end
 } tskTCB;
 

@@ -44,8 +44,8 @@
 
 static int dofile (lua_State *L, const char *name);
 
-extern int threadInited;
-extern int lua_shell_on;
+//extern int threadInited;
+//extern int lua_shell_on;
 
 #if LUA_USE_LUA_LOCK
 pthread_mutex_t lua_mutex;
@@ -125,75 +125,84 @@ inline void LuaUnlock(lua_State *L) {
 
 // Execute system.lua and autorun.lua at boot time
 static void luaos_boot_scripts(lua_State *L) {
-    //int  system, autorun;
-    //FILE *fp;
-    //int i;
+    int  system, autorun;
+    FILE *fp;
+    int i;
 
-    //const char *system_order[2];
-    //const char *autorun_order[2];
+    const char *system_order[2];
+    const char *autorun_order[2];
 
-    //if (!mount_is_mounted("sd") && !mount_is_mounted("cfi")) {
-    //    // No filesystem is mounted, exit
-    //    return;
-    //} else if (!mount_is_mounted("sd") &&  mount_is_mounted("cfi")) {
-    //    system_order[0] = "/system.lua";
-    //    system_order[1] = NULL;
+//    if (!mount_is_mounted("sd") && !mount_is_mounted("cfi")) {//SPIFFS mount "cfi"
+//        // No filesystem is mounted, exit
+//        return;
+//    } else if (!mount_is_mounted("sd") &&  mount_is_mounted("cfi")) {
+//        system_order[0] = "/system.lua";
+//        system_order[1] = NULL;
 
-    //    autorun_order[0] = "/autorun.lua";
-    //    autorun_order[1] = NULL;
-    //} else if (mount_is_mounted("sd") && !mount_is_mounted("cfi")) {
-    //    system_order[0] = "/system.lua";
-    //    system_order[1] = NULL;
+//        autorun_order[0] = "/autorun.lua";
+//        autorun_order[1] = NULL;
+//    } else if (mount_is_mounted("sd") && !mount_is_mounted("cfi")) {
+//        system_order[0] = "/system.lua";
+//        system_order[1] = NULL;
 
-    //    autorun_order[0] = "/autorun.lua";
-    //    autorun_order[1] = NULL;
-    //} else if (mount_is_mounted("sd") &&  mount_is_mounted("cfi")) {
-    //    system_order[0] = "/sd/system.lua";
-    //    system_order[1] = NULL;
+//        autorun_order[0] = "/autorun.lua";
+//        autorun_order[1] = NULL;
+//    } else if (mount_is_mounted("sd") &&  mount_is_mounted("cfi")) {
+//        system_order[0] = "/sd/system.lua";
+//        system_order[1] = NULL;
 
-    //    autorun_order[0] = "/sd/autorun.lua";
-    //    autorun_order[1] = NULL;
-    //}
+//        autorun_order[0] = "/sd/autorun.lua";
+//        autorun_order[1] = NULL;
+//    }
 
-    //printf("\n");
+    printf("\r\nluaos_boot_scripts...\r\n");
+    system_order[0] = "/system.lua";
+    system_order[1] = NULL;
 
-    //// Ecexute system script
-    //system = -1;
-    //for(i = 0; i < sizeof(system_order) / sizeof(*system_order); i++) {
-    //    if (system_order[i]) {
-    //        if ((fp = fopen(system_order[i], "r" ))) {
-    //            fclose(fp);
-    //            system = i;
-    //            break;
-    //        }            
-    //    }
-    //}
-    //
-    //if (system >=0) {
-    //    printf("Executing %s ...\n", system_order[system]);
-    //    dofile(L, system_order[system]);
-    //}
-    //
-    //// Ecexute autorun script
-    //autorun = -1;
-    //for(i = 0; i < sizeof(autorun_order) / sizeof(*autorun_order); i++) {
-    //    if (autorun_order[i]) {
-    //        if ((fp = fopen(autorun_order[i], "r" ))) {
-    //            fclose(fp);
-    //            autorun = i;
-    //            break;
-    //        }            
-    //    }
-    //}
+    autorun_order[0] = "/autorun.lua";
+    autorun_order[1] = NULL;
 
-    //if (autorun >=0) {
-    //    printf("Executing %s ...\n", autorun_order[autorun]);
-    //    dofile(L, autorun_order[autorun]);
-    //}
-    //
-    //printf("\n");
-	printf("\r\nluaos_boot_scripts\r\n");
-	dofile(L, "test.lua");
+    printf("\n");
+
+    // Ecexute system script
+    system = -1;
+    for(i = 0; i < sizeof(system_order) / sizeof(*system_order); i++) {
+        if (system_order[i]) {
+					fp = fopen(system_order[i], "r" );
+            if (fp) {
+                fclose(fp);
+                system = i;
+                break;
+            }            
+        }
+    }
+    
+    if (system >=0) {
+        printf("Executing %s ...\n", system_order[system]);
+        dofile(L, system_order[system]);
+    }
+    
+    // Ecexute autorun script
+    autorun = -1;
+    for(i = 0; i < sizeof(autorun_order) / sizeof(*autorun_order); i++) {
+        if (autorun_order[i]) {
+					fp = fopen(autorun_order[i], "r" );
+            if (fp) {
+                fclose(fp);
+                autorun = i;
+                break;
+            }            
+        }
+    }
+
+    if (autorun >=0) {
+        printf("Executing %s ...\n", autorun_order[autorun]);
+			dofile(L, autorun_order[autorun]);//autorun.lua中最好不要嵌套dofile,之后会进行线程，导致无法运行
+    }
+    
+    printf("\n");
+//	printf("\r\nluaos_boot_scripts\r\n");
+//	dofile(L, "test.lua");
 }
 
 // LuaOS version of pmain

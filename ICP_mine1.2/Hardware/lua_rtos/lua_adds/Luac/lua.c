@@ -611,3 +611,203 @@ int lua_main(int argc, char **argv) {//add by lcj
   return (result && status == LUA_OK) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 
+/************* user define *******************/
+#include "lua_test.h"
+#include "main.h"
+
+#include "fatfs.h"
+#include "xprintf.h"
+
+/* 测试Lua的字符串 */
+const char lua_test[] = { 
+	//"print(\"Version= \",_VERSION)\n"
+	"print(\"\\r\\n--> this is newline printf\\r\\n\")\n"
+	"function foo()\n"
+	"  local i = 0\n"
+	"  local sum = 1\n"
+	"  while i <= 10 do\n"
+	"    sum = sum * 2\n"
+	"    i = i + 1\n"
+	"  end\n"
+	"return sum\n"
+	"end\n"
+	"print(\"use foo()..,sum =\", foo())\n"
+	"print(\" and sum = 2^11 =\", 2 ^ 11)\n"
+	"print(\" exp(200) =\", math.exp(200))\n"
+};
+
+/* 运行Lua */
+void lua_main_test(void)
+{
+	lua_State *L;
+	int ret = LUA_OK;
+	
+	L = luaL_newstate(); /* 建立Lua运行环境 */
+	if (L == NULL) {
+    l_message("lua_test.c: ", "cannot create state: not enough memory");
+    //return EXIT_FAILURE;
+		while(1);
+  }
+	
+	luaL_checkversion(L);  /* check that interpreter has correct version */
+	luaL_openlibs(L); /* open standard libraries */
+	//luaopen_base(L);//luaL_openlibs加载了open_base
+	print_version();
+	
+	ret = luaL_dostring(L, lua_test); /* 运行Lua脚本 */
+	
+	report(L, ret);//打印错误报告,返回值也是ret
+	
+	lua_close(L);
+	
+	if(ret != LUA_OK){
+		//xprintf("\r\nSomething error in luaL_dostring!\r\n");
+	  Error_Handler();
+	}
+	
+	//lua.c main()
+//	lua_pushcfunction(L, &pmain);  /* to call 'pmain' in protected mode */
+//  lua_pushinteger(L, argc);  /* 1st argument */
+//  lua_pushlightuserdata(L, argv); /* 2nd argument */
+//  status = lua_pcall(L, 2, 1, 0);  /* do the call */
+//  result = lua_toboolean(L, -1);  /* get result */
+//  report(L, status);
+//  lua_close(L);
+//  return (result && status == LUA_OK) ? EXIT_SUCCESS : EXIT_FAILURE;
+}
+
+// @ function: 
+// @ description: lua do_file
+// @ input:
+// @ note:
+int do_file_script(char *filename)
+{
+	
+	FATFS fs;                 // Work area (file system object) for logical drive
+	FIL fil;                  // file objects
+	char rtext[500];                     /* File read buffers */
+	uint32_t bytesread;                   /* File read counts */
+	
+	lua_State *L;
+	int ret = LUA_OK;
+	
+//	xprintf("\r\n ****** FatFs Example ******\r\n\r\n");
+ 
+    /*##-1- Register the file system object to the FatFs module ##############*/
+    retSD = f_mount(&fs, "", 0);
+    if(retSD)
+    {
+        xprintf(" mount error : %d \r\n",retSD);
+        Error_Handler();
+    }
+//    else
+//        printf(" mount sucess!!! \r\n");
+		
+		retSD = f_open(&fil, filename, FA_READ);
+    if(retSD)
+       xprintf(" open file error : %d\r\n",retSD);
+//    else
+//        printf(" open file sucess!!! \r\n");
+     
+    retSD = f_read(&fil, rtext, sizeof(rtext), (UINT*)&bytesread);
+    if(retSD)
+        xprintf(" read error!!! %d\r\n",retSD);
+//    else
+//    {
+//        printf(" read sucess!!! \r\n");
+//        //printf(" read Data : %s\r\n",rtext);
+//    }
+    
+    retSD = f_close(&fil);
+    if(retSD)  
+        xprintf(" close error!!! %d\r\n",retSD);
+//    else
+//        xprintf(" close sucess!!! \r\n");
+		
+		L = luaL_newstate(); /* 建立Lua运行环境 */
+	if (L == NULL) {
+    l_message("lua_test.c: ", "cannot create state: not enough memory");
+    //return EXIT_FAILURE;
+		Error_Handler();
+  }
+	
+	luaL_checkversion(L);  /* check that interpreter has correct version */
+	luaL_openlibs(L); /* open standard libraries */
+	//luaopen_base(L);//luaL_openlibs加载了open_base
+	print_version();
+	
+	rtext[bytesread]='\0';
+//	xprintf(" read Data : %s\r\n",rtext);
+	
+	ret = luaL_dostring(L, rtext); /* 运行Lua脚本 */
+	
+	report(L, ret);//打印错误报告,返回值也是ret
+	
+	lua_close(L);
+	
+	if(ret != LUA_OK){
+		//xprintf("\r\nSomething error in luaL_dostring!\r\n");
+	  Error_Handler();
+	}
+		
+		return 1;
+}
+
+// @ function: 
+// @ description:lua do_file using fopen
+// @ input:
+// @ note:
+int do_file_script1(char *filename)
+{
+	FILE *fp;
+	uint32_t size;
+	char buff[100];
+	lua_State *L;
+	int ret;
+	
+	if( ( fp = fopen(filename, "r" ) ) == NULL )
+	{
+		return -1;
+	}
+	fseek( fp, 0L, SEEK_END );
+  size=ftell(fp);
+	xprintf("size=%d\r\n",size);
+	fseek(fp,0L,SEEK_SET);
+	if(size<=0)
+	{	
+		fclose( fp ); 
+		return -1;
+	}
+  //xprintf("sizeof=%d",sizeof(buff));//sizeof(buff))is 100
+	fread(&buff,size,1,fp);
+  fclose(fp);	
+	if(buff==NULL)
+	{		
+		xprintf("\r\n read error\r\n");
+		return -1;
+	}
+	else{
+		buff[size]='\0';
+		xprintf("******** script is :************\r\n%s\r\n",buff);
+	}
+	xprintf("************************* \r\n");
+	
+	if( ( fp = fopen("S.txt", "a+" ) ) == NULL )
+	{
+		return -1;
+	}
+	
+	fwrite(&buff,size,1,fp);
+  fclose(fp);	
+	
+	L= luaL_newstate();
+	luaL_openlibs(L);
+	ret=luaL_dostring(L,buff);
+	xprintf("\r\n dofile start\r\n");
+	dofile(L,filename);
+	report(L, ret);//打印错误报告,返回值也是ret
+	lua_close(L);
+
+	return 0;
+}
+

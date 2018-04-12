@@ -208,7 +208,7 @@
           <Type>0</Type>
           <LineNumber>150</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134364612</Address>
+          <Address>134339324</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -224,7 +224,7 @@
           <Type>0</Type>
           <LineNumber>180</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134320458</Address>
+          <Address>134291458</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -238,9 +238,9 @@
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>197</LineNumber>
+          <LineNumber>190</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134320532</Address>
+          <Address>134293988</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -249,55 +249,23 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Hardware\lua-5.3.4\user\stm32_lua_config.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\ICP_mine1\../Hardware/lua-5.3.4/user/stm32_lua_config.c\197</Expression>
+          <Expression>\\ICP_mine1\../Hardware/lua-5.3.4/user/stm32_lua_config.c\190</Expression>
         </Bp>
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>132</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134399448</Address>
+          <LineNumber>207</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134294032</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Hardware\lua_rtos\Lua_test_thread.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\ICP_mine1\../Hardware/lua_rtos/Lua_test_thread.c\132</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>190</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
           <Filename>..\Hardware\lua-5.3.4\user\stm32_lua_config.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>5</Number>
-          <Type>0</Type>
-          <LineNumber>207</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Hardware\lua-5.3.4\user\stm32_lua_config.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\ICP_mine1\../Hardware/lua-5.3.4/user/stm32_lua_config.c\207</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -435,7 +403,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>7</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
@@ -729,7 +697,7 @@
 
   <Group>
     <GroupName>Drivers/CMSIS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -750,7 +718,7 @@
 
   <Group>
     <GroupName>Application/MDK-ARM</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2219,19 +2187,6 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Hardware\lua_rtos\lua_adds\modules\thread.c</PathWithFileName>
-      <FilenameWithoutPath>thread.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>22</GroupNumber>
-      <FileNumber>132</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>..\Hardware\lua_rtos\lua_adds\Luac\lua.c</PathWithFileName>
       <FilenameWithoutPath>lua.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -2239,7 +2194,7 @@
     </File>
     <File>
       <GroupNumber>22</GroupNumber>
-      <FileNumber>133</FileNumber>
+      <FileNumber>132</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2252,7 +2207,7 @@
     </File>
     <File>
       <GroupNumber>22</GroupNumber>
-      <FileNumber>134</FileNumber>
+      <FileNumber>133</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2265,7 +2220,7 @@
     </File>
     <File>
       <GroupNumber>22</GroupNumber>
-      <FileNumber>135</FileNumber>
+      <FileNumber>134</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2279,14 +2234,100 @@
   </Group>
 
   <Group>
-    <GroupName>lua_rtos/freeertos_adds</GroupName>
+    <GroupName>lua_rtos/modules</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>23</GroupNumber>
+      <FileNumber>135</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Hardware\lua_rtos\lua_adds\modules\auxmods.h</PathWithFileName>
+      <FilenameWithoutPath>auxmods.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
       <FileNumber>136</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Hardware\lua_rtos\lua_adds\modules\lgpiolib.c</PathWithFileName>
+      <FilenameWithoutPath>lgpiolib.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>137</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Hardware\lua_rtos\lua_adds\modules\thread.c</PathWithFileName>
+      <FilenameWithoutPath>thread.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>138</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Hardware\lua_rtos\lua_adds\modules\thread.h</PathWithFileName>
+      <FilenameWithoutPath>thread.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>139</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Hardware\lua_rtos\lua_adds\modules\makeparam.h</PathWithFileName>
+      <FilenameWithoutPath>makeparam.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>140</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Hardware\lua_rtos\lua_adds\modules\pio.h</PathWithFileName>
+      <FilenameWithoutPath>pio.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>lua_rtos/freeertos_adds</GroupName>
+    <tvExp>0</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>24</GroupNumber>
+      <FileNumber>141</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2298,8 +2339,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>23</GroupNumber>
-      <FileNumber>137</FileNumber>
+      <GroupNumber>24</GroupNumber>
+      <FileNumber>142</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2319,8 +2360,8 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>24</GroupNumber>
-      <FileNumber>138</FileNumber>
+      <GroupNumber>25</GroupNumber>
+      <FileNumber>143</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2332,15 +2373,28 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>24</GroupNumber>
-      <FileNumber>139</FileNumber>
+      <GroupNumber>25</GroupNumber>
+      <FileNumber>144</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Hardware\lua_rtos\Lua_test_thread.c</PathWithFileName>
       <FilenameWithoutPath>Lua_test_thread.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>25</GroupNumber>
+      <FileNumber>145</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Hardware\lua_rtos\myBoardDef.h</PathWithFileName>
+      <FilenameWithoutPath>myBoardDef.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

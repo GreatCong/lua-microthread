@@ -53,6 +53,8 @@ struct pthreadTaskArg {
     void *args;
     int id;
     int initial_state;
+	
+		int stack;//add by lcj
 };
   
 void pthreadTask(void *task_arguments);
@@ -131,6 +133,7 @@ int _pthread_create(pthread_t *id, int priority, int stacksize, int initial_stat
 
     taskArgs->id = *id;
     thread->thread = *id;
+		taskArgs->stack = stacksize;//add by lcj
     
     mtx_lock(&thread->init_mtx);
 
@@ -375,6 +378,7 @@ void pthreadTask(void *taskArgs) {
 
     // Set thread id
     uxSetThreadId(args->id);
+		uxSetStack(args->stack);//add by lcj
 
 	if (args->args) {
 		// Set Lua context into TCB
@@ -464,8 +468,8 @@ int _pthread_stack(pthread_t id) {
 		return res;
 	}
 
-	/*return (int)uxGetStack(thread->task);*/
-	return -0xff;
+	return (int)uxGetStack(thread->task);
+//	return -0xff;
 }
 
 int _pthread_priority(pthread_t id) {

@@ -1168,11 +1168,6 @@
           <GroupName>lua_rtos/lua_adds</GroupName>
           <Files>
             <File>
-              <FileName>thread.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\thread.c</FilePath>
-            </File>
-            <File>
               <FileName>lua.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Hardware\lua_rtos\lua_adds\Luac\lua.c</FilePath>
@@ -1191,6 +1186,41 @@
               <FileName>my_luaconf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Hardware\lua_rtos\lua_adds\my_luaconf.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lua_rtos/modules</GroupName>
+          <Files>
+            <File>
+              <FileName>auxmods.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\auxmods.h</FilePath>
+            </File>
+            <File>
+              <FileName>lgpiolib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\lgpiolib.c</FilePath>
+            </File>
+            <File>
+              <FileName>thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\thread.c</FilePath>
+            </File>
+            <File>
+              <FileName>thread.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\thread.h</FilePath>
+            </File>
+            <File>
+              <FileName>makeparam.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\makeparam.h</FilePath>
+            </File>
+            <File>
+              <FileName>pio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\pio.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1221,6 +1251,11 @@
               <FileName>Lua_test_thread.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Hardware\lua_rtos\Lua_test_thread.c</FilePath>
+            </File>
+            <File>
+              <FileName>myBoardDef.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\myBoardDef.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -35,5 +35,6 @@
 //#define UNUSED_ARG(x) (void)(x)
 
 #define LUA_USE_THREAD 1 //add by lcj	
+#define LUA_USE_PIO 1 //add by lcj	
 
 #endif	/* CONFIG_H */

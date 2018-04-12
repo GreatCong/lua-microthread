@@ -89,7 +89,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		get_xtask_state();//获取任务的状态
+//		get_xtask_state();//获取任务的状态
 //		HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
 		//HAL_Delay(1000);
     osDelay(5000);//每隔5秒获取一次每个任务的状态信息
@@ -132,7 +132,11 @@ void StartAppTask(void const * argument)
 //        rw_sysSleep(100);
 
 //    }
-   test_netWorkTask();
+//   test_netWorkTask();
+	 for(;;)
+  {
+    osDelay(5000);
+  }
   /* USER CODE END StartAppTask */
 }
 

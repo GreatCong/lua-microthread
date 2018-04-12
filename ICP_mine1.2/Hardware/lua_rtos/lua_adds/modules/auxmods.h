@@ -8,8 +8,8 @@
 #include "lua.h"
 //add by lcj ½ö±£Áôthread
 
-//#define AUXLIB_PIO      "pio"
-//LUALIB_API int ( luaopen_pio )( lua_State *L );
+#define AUXLIB_PIO      "pio"
+LUALIB_API int ( luaopen_pio )( lua_State *L );
 //
 //#define AUXLIB_SPI      "spi"
 //LUALIB_API int ( luaopen_spi )( lua_State *L );

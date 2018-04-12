@@ -86,12 +86,12 @@ void MX_FREERTOS_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-extern void user_init(void);//add by lcj
+extern void lua_app_main(void);//add by lcj
 
 static void LuaTask(void *pvParameters);//add by lcj
 
 static void LuaTask(void *pvParameters) {
-	user_init();//add by lcj
+	lua_app_main();//add by lcj
 	vTaskDelete(NULL);//若传进来的值是NULl,则删除的是任务本身
 	for(;;){
 	  vTaskDelay(5000);
