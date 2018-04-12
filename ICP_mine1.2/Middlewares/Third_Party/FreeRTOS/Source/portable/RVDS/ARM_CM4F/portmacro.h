@@ -285,6 +285,8 @@ BaseType_t xReturn;
 	return xReturn;
 }
 
+#include "portmacro_add.h"//add by lcj
+
 
 #ifdef __cplusplus
 }

@@ -369,7 +369,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F405xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;  ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;  ../Middlewares/Third_Party/FreeRTOS/Source/include;  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;  ../Drivers/CMSIS/Include;  ..\RAKSDK\examples_os;  ..\RAKSDK\rw_lib;  ..\RAKSDK\common\include;  ..\RAKSDK\bsp;  ..\Hardware\AD7606;  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;  ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc;  ..\Hardware\bluetooth;  ..\OS_task\my_task;  ..\OS_task\my_queue;  ../Middlewares/Third_Party/FatFs/src;  ..\Hardware\my_fatfs;  ..\Hardware\lua-5.3.4\src;  ..\Hardware\stubs;  ..\Hardware\lua-5.3.4\user</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Drivers/CMSIS/Include;..\RAKSDK\examples_os;..\RAKSDK\rw_lib;..\RAKSDK\common\include;..\RAKSDK\bsp;..\Hardware\AD7606;../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc;..\Hardware\bluetooth;..\OS_task\my_task;..\OS_task\my_queue;../Middlewares/Third_Party/FatFs/src;..\Hardware\my_fatfs;..\Hardware\lua-5.3.4\src;..\Hardware\stubs;..\Hardware\lua-5.3.4\user;..\Hardware\lua_rtos;..\Hardware\lua_rtos\pthread;..\Hardware\lua_rtos\lua_adds;..\Hardware\lua_rtos\lua_adds\modules;..\Hardware\lua_rtos\Freertos_adds</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1081,6 +1081,146 @@
               <FileName>xprintf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Hardware\stubs\xprintf.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lua_rtos/pthread</GroupName>
+          <Files>
+            <File>
+              <FileName>attr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\attr.c</FilePath>
+            </File>
+            <File>
+              <FileName>cleanup.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\cleanup.c</FilePath>
+            </File>
+            <File>
+              <FileName>cond.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\cond.c</FilePath>
+            </File>
+            <File>
+              <FileName>create.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\create.c</FilePath>
+            </File>
+            <File>
+              <FileName>join.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\join.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>mutex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\mutex.c</FilePath>
+            </File>
+            <File>
+              <FileName>once.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\once.c</FilePath>
+            </File>
+            <File>
+              <FileName>pthread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\pthread.c</FilePath>
+            </File>
+            <File>
+              <FileName>self.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\pthread\self.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lua_rtos/sys</GroupName>
+          <Files>
+            <File>
+              <FileName>mutex_sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\sys\mutex_sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>panic_sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\sys\panic_sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>status.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\sys\status.c</FilePath>
+            </File>
+            <File>
+              <FileName>list_sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\sys\list\list_sys.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lua_rtos/lua_adds</GroupName>
+          <Files>
+            <File>
+              <FileName>thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\thread.c</FilePath>
+            </File>
+            <File>
+              <FileName>lua.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\Luac\lua.c</FilePath>
+            </File>
+            <File>
+              <FileName>lua_adds.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\lua_adds.h</FilePath>
+            </File>
+            <File>
+              <FileName>Lua_modules.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\Lua_modules.h</FilePath>
+            </File>
+            <File>
+              <FileName>my_luaconf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\my_luaconf.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lua_rtos/freeertos_adds</GroupName>
+          <Files>
+            <File>
+              <FileName>portmacro_add.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\Freertos_adds\portmacro_add.h</FilePath>
+            </File>
+            <File>
+              <FileName>tasks_adds.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\Freertos_adds\tasks_adds.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lua_rtos/board_def</GroupName>
+          <Files>
+            <File>
+              <FileName>usleep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\usleep.c</FilePath>
+            </File>
+            <File>
+              <FileName>Lua_test_thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\Lua_test_thread.c</FilePath>
             </File>
           </Files>
         </Group>

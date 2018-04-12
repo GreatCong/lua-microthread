@@ -86,7 +86,19 @@ void MX_FREERTOS_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+extern void user_init(void);//add by lcj
 
+static void LuaTask(void *pvParameters);//add by lcj
+
+static void LuaTask(void *pvParameters) {
+	user_init();//add by lcj
+	vTaskDelete(NULL);//若传进来的值是NULl,则删除的是任务本身
+	for(;;){
+	  vTaskDelay(5000);
+	}
+}
+
+#define mainCHECK_TASK_PRIORITY			( configMAX_PRIORITIES/2 )
 /* USER CODE END 0 */
 
 /**
@@ -151,6 +163,8 @@ int main(void)
 	 if(mmcfs_init()<0){//初始化mmc_wrap 可以使用printf
 		 xprintf("none SD scard!\r\n");
 	 }
+	 
+	 xTaskCreate(LuaTask, "LuaTask", configMINIMAL_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL);
 //	 do_file_script1("autorun.lua");//测试lua SD卡读入
 	
 //	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_4);

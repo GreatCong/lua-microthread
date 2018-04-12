@@ -23,6 +23,7 @@
 	--> 2018.04.09
 	         在macrolib下,_sys_open等系统函数无法重定向，所以直接重定向了fopen等函数
 					 目前支持多个文件的读写(最大支持MMCFS_MAX_FDS = 4)
+					 luaconf.h --> 增加了宏 LUA_USE_XPRINTF 选择是否使用xprintf
 ******************************************************************************
 */
 
@@ -34,7 +35,7 @@
 
 //#include <rt_sys.h>
 #include "mmcfs.h"
-//#include "usart.h"
+#include "usart.h"
 
 //typedef int FILEHANDLE;
 
@@ -139,13 +140,23 @@ int fputc(int ch, FILE *f){
 }
 
 int fgetc(FILE *stream){
-  int handles=0;//默认为0	
-	handles = stream->handle;
 	int ch=0;
-  if (mmc_read(handles, &ch, 1))
+	if(stream==stdin){
+//	  while(1);//不想接收就直接用while
+		HAL_UART_Receive(&huart6,(uint8_t*)&ch,1,5000);//在中断中调用会造成阻塞，使用寄存器不会	
+//		if(0x0020==(USART6->SR&0X0020)){//判断是否接收到数据了
+//		ch = USART6->DR;
+//	}
 		return ch;
-	else
-	return EOF;
+	}
+	else{
+		int handles=0;//默认为0	
+		handles = stream->handle;
+		if (mmc_read(handles, &ch, 1))
+			return ch;
+		else
+		return EOF;
+ }
 }
 
 /*重定向文件相关*/

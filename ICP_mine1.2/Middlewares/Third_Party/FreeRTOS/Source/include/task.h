@@ -2258,6 +2258,23 @@ PRIVILEGED_FUNCTION eSleepModeStatus eTaskConfirmSleepModeStatus( void );
  */
 PRIVILEGED_FUNCTION void *pvTaskIncrementMutexHeldCount( void );
 
+// add by lcj
+#include "lua.h"
+
+UBaseType_t uxGetTaskId(void);
+UBaseType_t uxGetThreadId(void);
+void uxSetThreadId(UBaseType_t id);
+void uxSetLuaState(lua_State* L);
+lua_State* pvGetLuaState(void);
+TaskHandle_t xGetCurrentTask(void);
+void uxSetSignaled(TaskHandle_t h, int s);
+void uxClearSignaled(TaskHandle_t h, int s);
+uint32_t uxGetSignaled(TaskHandle_t h);
+void enter_critical_section(void);
+void exit_critical_section(void);
+
+// add by lcj END
+
 #ifdef __cplusplus
 }
 #endif

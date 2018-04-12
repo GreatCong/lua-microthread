@@ -15,9 +15,6 @@
 
 #include "luaconf.h"
 
-#include "xprintf.h"//add mine
-
-
 #define LUA_VERSION_MAJOR	"5"
 #define LUA_VERSION_MINOR	"3"
 #define LUA_VERSION_NUM		503
@@ -484,5 +481,8 @@ struct lua_Debug {
 * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************************************************************/
 
+// add by lcj
+#include "my_luaconf.h"
+// add by lcj END
 
 #endif

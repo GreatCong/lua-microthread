@@ -147,7 +147,7 @@ void StartTest_Task(void const * argument)
 //	  UsbSendData(xx,3);
 		//如果此Task有文件读写，需要将stack = 128 --> 1024
 //		fat_test();//写文件会影响到wifi,添加这个函数偶尔会出现丢包现象
-		do_file_script1("autorun.lua");//测试lua SD卡读入
+//		do_file_script1("autorun.lua");//测试lua SD卡读入
 		osDelay(5000);
   }
   /* USER CODE END StartTest_Task */

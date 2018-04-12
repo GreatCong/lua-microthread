@@ -359,7 +359,24 @@ typedef struct tskTaskControlBlock
 	#if( INCLUDE_xTaskAbortDelay == 1 )
 		uint8_t ucDelayAborted;
 	#endif
+ 
+ //add by lcj
+		/*
+		* thread id
+		*/
+		int threadid;
 
+		/*
+		* Lua state of current thread
+		*/
+		lua_State *L;
+
+		/*
+		* Received signal for this task. If signaled bit "n" is set signal "n"
+		* is received
+		*/
+		uint32_t signaled;
+		//add by lcj end
 } tskTCB;
 
 /* The old tskTCB name is maintained above then typedefed to the new TCB_t name
@@ -4804,4 +4821,6 @@ const TickType_t xConstTickCount = xTickCount;
 #ifdef FREERTOS_MODULE_TEST
 	#include "tasks_test_access_functions.h"
 #endif
+
+#include "tasks_adds.h"//add by lcj
 
