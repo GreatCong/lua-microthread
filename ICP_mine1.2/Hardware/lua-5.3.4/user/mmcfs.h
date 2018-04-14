@@ -14,4 +14,5 @@ long mmc_lseek(int handle, long offset, int whence);
 int mmcfs_init(void);
 long mmc_file_len(int handle);
 int mmcfs_feof(int handle);
+long mmc_ltell(int handle);
 #endif

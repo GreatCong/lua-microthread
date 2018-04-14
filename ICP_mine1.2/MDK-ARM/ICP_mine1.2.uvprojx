@@ -1162,6 +1162,11 @@
               <FileType>1</FileType>
               <FilePath>..\Hardware\lua_rtos\sys\list\list_sys.c</FilePath>
             </File>
+            <File>
+              <FileName>debug.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\sys\debug.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1221,6 +1226,31 @@
               <FileName>pio.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Hardware\lua_rtos\lua_adds\modules\pio.h</FilePath>
+            </File>
+            <File>
+              <FileName>linenoise.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\linenoise.c</FilePath>
+            </File>
+            <File>
+              <FileName>linenoise.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\linenoise.h</FilePath>
+            </File>
+            <File>
+              <FileName>tmr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\tmr.c</FilePath>
+            </File>
+            <File>
+              <FileName>machine.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\machine.c</FilePath>
+            </File>
+            <File>
+              <FileName>lhardwrae.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\lhardwrae.c</FilePath>
             </File>
           </Files>
         </Group>

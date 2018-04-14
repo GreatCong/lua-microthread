@@ -205,6 +205,11 @@ static void luaos_boot_scripts(lua_State *L) {
 //	dofile(L, "test.lua");
 }
 
+static void print_myversion (void) {
+  lua_writestring(LUA_MYCOPYRIGHT, strlen(LUA_MYCOPYRIGHT));
+  lua_writeline();
+}
+
 // LuaOS version of pmain
 //
 // Changes from original source are:
@@ -217,10 +222,11 @@ static int luaos_pmain (lua_State *L) {
 
   debug_free_mem_begin(luaL_openlibs);
   luaL_openlibs(L);  /* open standard libraries */
-  //luaopen_thread(L);
+  luaL_openHardwarelibs(L);
   debug_free_mem_end(luaL_openlibs, NULL);
     
-  print_version();
+//  print_version();
+	print_myversion();
 
   if (!status_get(STATUS_LUA_ABORT_BOOT_SCRIPTS)) {
 	  luaos_boot_scripts(L);

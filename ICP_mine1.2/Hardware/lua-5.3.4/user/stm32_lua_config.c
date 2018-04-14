@@ -24,6 +24,11 @@
 	         在macrolib下,_sys_open等系统函数无法重定向，所以直接重定向了fopen等函数
 					 目前支持多个文件的读写(最大支持MMCFS_MAX_FDS = 4)
 					 luaconf.h --> 增加了宏 LUA_USE_XPRINTF 选择是否使用xprintf
+	--> 2018.04.10
+	         luaconf.h --> 替换lua_readline为linenoise，支持putty shell交互
+	--> 2018.04.14
+	         更改部分重定义函数,支持feof的flag功能
+					 luaconf.h --> 增加了宏 LUA_USE_MYMALLOC 选择是否使用自定义管理函数mymalloc
 ******************************************************************************
 */
 
@@ -33,7 +38,7 @@
 
 //#include "my_malloc.h"
 
-//#include <rt_sys.h>
+#include <rt_sys.h>
 #include "mmcfs.h"
 #include "usart.h"
 
@@ -116,10 +121,12 @@
 //
 //#endif
 
+
 //定义文件的句柄
 struct __FILE 
 {
 	int handle; 
+	int eof_flagNone;//eof no flag
 }; 
 
 int fputc(int ch, FILE *f){
@@ -144,7 +151,7 @@ int fgetc(FILE *stream){
 	if(stream==stdin){
 //	  while(1);//不想接收就直接用while
 		HAL_UART_Receive(&huart6,(uint8_t*)&ch,1,5000);//在中断中调用会造成阻塞，使用寄存器不会	
-//		if(0x0020==(USART6->SR&0X0020)){//判断是否接收到数据了
+//		if(0==(USART6->SR&0X0020)){//判断是否接收到数据了
 //		ch = USART6->DR;
 //	}
 		return ch;
@@ -152,10 +159,15 @@ int fgetc(FILE *stream){
 	else{
 		int handles=0;//默认为0	
 		handles = stream->handle;
-		if (mmc_read(handles, &ch, 1))
+		if (mmc_read(handles, &ch, 1)){
+			//由于f_eof没有flag,加一个缓冲
+		  if(mmcfs_feof(handles)){stream->eof_flagNone = 0;}
 			return ch;
-		else
+		}
+		else{
+		  stream->eof_flagNone = 1;
 		return EOF;
+		}
  }
 }
 
@@ -163,11 +175,15 @@ int fgetc(FILE *stream){
 // @ function: 
 // @ description:feof
 // @ input:
-// @ note:
+// @ note: 1.这里的feof与c语言中的feof有些不同,当使用fseek将文件指针移动到末尾时，feof仍然返回0,
+//         但是当试图读取fsize+1时，feof会返回非零值
+//         2.已经修改为支持flag
 int feof(FILE * stream){
   int handles=0;//默认为0	
 	handles = stream->handle;
-  return mmcfs_feof(handles);
+	int eof_cur = mmcfs_feof(handles);
+	if(!eof_cur) {stream->eof_flagNone = 1;} //flags
+  return  (stream->eof_flagNone && eof_cur);
 }
 
 // @ function: 
@@ -187,6 +203,7 @@ int fclose(FILE * stream){
 // @ note:
 FILE *fopen(const char * filename,const char * mode) {
 	FILE *file = (FILE *)malloc(sizeof(FILE));
+	file->eof_flagNone = 0;
 	int mode_int = FA_READ;
 	switch(mode[0]){
 	  case 'r':
@@ -228,7 +245,10 @@ FILE *fopen(const char * filename,const char * mode) {
 int fseek(FILE * stream, long int offset, int whence){
 	int handles=0;//默认为0
   handles = stream->handle;
-  return mmc_lseek(handles, offset, whence);
+	if(mmc_lseek(handles, offset, whence)<0)
+		return EOF;
+	else
+		return 0;
 }
 
 // @ function: 
@@ -238,7 +258,7 @@ int fseek(FILE * stream, long int offset, int whence){
 long int ftell(FILE * stream){
 	int handles=0;//默认为0
   handles = stream->handle;
-  return mmc_file_len(handles);
+  return mmc_ltell(handles);
 }
 
 //FILEHANDLE _sys_open(const char *name, int openmode)//使用microlib 无法对_sys_open重定向

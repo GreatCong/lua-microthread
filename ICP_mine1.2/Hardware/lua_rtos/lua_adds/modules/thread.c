@@ -528,7 +528,7 @@ static int thread_sleepms(lua_State* L) {
     // Check argument (seconds)
     milliseconds = luaL_checkinteger(L, 1);
     
-    usleep(milliseconds * 1000);
+    msleep(milliseconds);
     
     return 0;
 }

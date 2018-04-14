@@ -154,7 +154,7 @@ int main(void)
 		x_printf_init();
 
   HAL_Delay(5000);//延长5s再开启蓝牙
-	lua_main_test();//测试lua脚本
+//	lua_main_test();//测试lua脚本
 	xprintf("\r\n");
 	/*check GPIO SD detect*/
 //	if(HAL_GPIO_ReadPin(SD_CDZ_DETECT_GPIO_Port,SD_CDZ_DETECT_Pin)!=GPIO_PIN_RESET){//SD插入时为低电平

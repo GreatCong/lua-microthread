@@ -11,13 +11,25 @@
 #include <limits.h>
 #include <stddef.h>
 
-#ifndef LUA_USE_XPRINTF
-#define LUA_USE_XPRINTF 0//add mine
-#endif
+//add by lcj
+#include "myBoarddef.h"
 
 #if LUA_USE_XPRINTF
 #include "xprintf.h"//add mine
 #endif
+#if LUA_USE_MYMALLOC
+#include "my_malloc.h"//add mine
+#define MY_LUA_FREE(p) 		    myfree(SRAMCCM,p);
+#define MY_LUA_REALLOC(p,n) 	myrealloc(SRAMCCM,p, n);
+#endif
+
+#ifndef MY_LUA_FREE
+#define MY_LUA_FREE(p) free(p)
+#endif
+#ifndef MY_LUA_REALLOC 
+#define MY_LUA_REALLOC(p,n) realloc(p,n)
+#endif
+
 //默认的是将错误输出到文件，这里重定向为串口输出
 //#define lua_writestringerror(s,p) xprintf("Error!\r\n");xprintf(s,p)
 ////        (fprintf(stderr, (s), (p)), fflush(stderr))
@@ -28,6 +40,16 @@
 //#define lua_writeline()   (lua_writestring("\n", 1))    
 ////(lua_writestring("\n", 1), fflush(stdout))
 
+#include "linenoise.h"
+#define lua_readline(L,b,p)     ((void)L, (linenoise(b, p)) != -1)//add by lcj
+#define lua_saveline(L,line)	{ (void)L; (void)line; }//定义read_line 就要定义其他
+#define lua_freeline(L,b)	{ (void)L; (void)b; }
+
+//#define lua_writeline()        (lua_writestring("\n", 1), fflush(stdout))
+#if SHELL_USE_WINDOWS_LINE
+#define lua_writeline()        (lua_writestring("\r\n", 2), fflush(stdout))
+#endif
+//add by lcj end
         
 
 /*

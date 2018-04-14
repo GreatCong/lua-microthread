@@ -57,7 +57,7 @@ linit 注册Lua
 //#define LUA_CDIR	LUA_ROOT "lib/lua/"
 //
 //#undef  LUA_COPYRIGHT
-//#define LUA_COPYRIGHT	"LuaOS " LUA_OS_VER " powered by " LUA_RELEASE 
+//#define LUA_COPYRIGHT	"Lua-Microthread " LUA_OS_VER " powered by " LUA_RELEASE 
 //
 //#undef  LUAI_THROW
 //#define LUAI_THROW(L,c)	longjmp((c)->b, 1)
@@ -193,6 +193,12 @@ linit 注册Lua
     #define LINIT_REG_LORA {AUXLIB_LORA, luaopen_lora},
 #else
     #define LINIT_REG_LORA
+#endif
+		
+#if LUA_USE_MACHINE //包含shell等信息
+    #define LINIT_REG_MACHINE {AUXLIB_MACHINE, luaopen_machine},
+#else
+    #define LINIT_REG_MACHINE
 #endif
 
 #define LINIT_REG_ADDS \

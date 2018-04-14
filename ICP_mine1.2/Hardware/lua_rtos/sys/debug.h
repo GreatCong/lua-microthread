@@ -32,7 +32,7 @@
 
 #include "FreeRTOS.h"
 
-#define DEBUG_FREE_MEM 1//开启Debug
+#include "myBoardDef.h"
 
 #if DEBUG_FREE_MEM
 #define debug_free_mem_begin(var) \

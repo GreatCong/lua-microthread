@@ -30,11 +30,28 @@
 #ifndef __MY_BOARD_DEF_H_
 #define	__MY_BOARD_DEF_H_
 
-//#define LUA_OS_VER "beta 0.1"
+#define LUA_OS_VER " 1.0 beta "
+#define BUILD_TIME 20180413
+#define LUA_MYCOPYRIGHT	"Lua-Microthread " LUA_OS_VER " powered by " LUA_RELEASE 
 
 //#define UNUSED_ARG(x) (void)(x)
 
+/*********** lua modules ****************/
 #define LUA_USE_THREAD 1 //add by lcj	
 #define LUA_USE_PIO 1 //add by lcj	
+#define LUA_USE_TMR 1
+#define LUA_USE_MACHINE 1
+
+#define LUA_USE_HISTORY 1
+#define LUA_USE_XPRINTF 0
+#define SHELL_USE_WINDOWS_LINE 1 // \r\n
+#define LUA_USE_MYMALLOC 1 //是否使用自定义内存管理函数
+
+#define DEBUG_FREE_MEM 0//开启Debug debug.h
+
+/************** default define **************************/
+#define HISTORY_DEFAULT_STATE 0 //history log
+
+
 
 #endif	/* CONFIG_H */

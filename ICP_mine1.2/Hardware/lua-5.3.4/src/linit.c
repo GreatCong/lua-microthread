@@ -51,8 +51,10 @@ static const luaL_Reg loadedlibs[] = {
   {LUA_DBLIBNAME, luaopen_debug},
 	
 	//{LUA_THREADLIBNAME, luaopen_thread },//add by lcj
-  LINIT_REG_THREAD //add by lcj
-	LINIT_REG_PIO//add by lcj
+//  LINIT_REG_THREAD //add by lcj
+//	LINIT_REG_PIO//add by lcj
+//	LINIT_REG_TMR//add by lcj
+//	LINIT_REG_MACHINE //add by lcj
 	
 #if defined(LUA_COMPAT_BITLIB)
   {LUA_BITLIBNAME, luaopen_bit32},

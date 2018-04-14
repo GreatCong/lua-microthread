@@ -7,6 +7,7 @@
 //#include <process.h>
 
 extern int usleep(int useconds);
-extern int sleep(int n);
+extern int sleep(int sec);
+extern int msleep(int msec);
 
 #endif /* _UNISTD_H */

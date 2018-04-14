@@ -33,6 +33,9 @@
 #define LGPIO_PULLUP   MAKE_P(GPIO_LIB_TYPE,6,GPIO_PULLUP)
 #define LGPIO_PULLDOWN MAKE_P(GPIO_LIB_TYPE,7,GPIO_PULLDOWN)
 
+#define LGPIO_STATE_HIGH   MAKE_P(GPIO_LIB_TYPE,5,GPIO_PIN_SET)
+#define LGPIO_STATE_LOW    MAKE_P(GPIO_LIB_TYPE,6,GPIO_PIN_RESET)
+
 #define is_lgpio_mode(mode) ( (P_TYPE(mode)==GPIO_LIB_TYPE) && \
                               (P_NUM(mode)>=1) && (P_NUM(mode)<=4) )
 #define is_lgpio_pull(pull) ( (P_TYPE(pull)==GPIO_LIB_TYPE) && \
@@ -167,13 +170,15 @@ static int lgpio_mode(lua_State *L)
 		pull=luaL_checkinteger(L,3);
 		
 	if(!is_lgpio_mode(mode) || !is_lgpio_pull(pull) ){
-		lua_pushstring(L,"param error! gpio.mode(pin,mode)\n");
-		lua_error(L);
+		return luaL_error(L, "param error! gpio.mode(pin,mode) ");
+//		lua_pushstring(L,"param error! gpio.mode(pin,mode)\n");
+//		lua_error(L);
 	}
 
 	if(gpio_mode(pin,P_DATA(mode),P_DATA(pull))){
-		lua_pushstring(L,"param error! gpio.mode(pin,mode)\n");
-		lua_error(L);
+		return luaL_error(L, "param error! gpio.mode(pin,mode) ");
+//		lua_pushstring(L,"param error! gpio.mode(pin,mode)\n");
+//		lua_error(L);
 	}
 
 	return 0; /* lua return value */
@@ -189,8 +194,9 @@ static int lgpio_write(lua_State *L)
 	val=luaL_checkinteger(L,2);
 
 	if(gpio_write(pin,val)){
-		lua_pushstring(L,"param error! GPIO.write(pin,value) \n");
-		lua_error(L);
+		return luaL_error(L, "param error! GPIO.write(pin,value) ");
+//		lua_pushstring(L,"param error! GPIO.write(pin,value) \n");
+//		lua_error(L);
 	}
 
 	return 0;
@@ -222,16 +228,10 @@ static int lgpio_toggle(lua_State *L)
 {
 	int pin=luaL_checkinteger(L,1);
 	if(gpio_toggle(pin)){
-		lua_pushstring(L,"param not a really pin!\n");
-		lua_error(L);
+//		lua_pushstring(L,"param not a really pin!\n");
+//		lua_error(L);
+		return luaL_error(L, "param not a really pin!");
 	}
-	return 0;
-}
-
-static int lgpio_delay(lua_State *L)
-{
-	int ms=luaL_checkinteger(L,1);
-	HAL_Delay(ms);
 	return 0;
 }
 
@@ -245,15 +245,18 @@ static const LUA_REG_TYPE gpioLib[] = {
     { LSTRKEY( "write" ),			LFUNCVAL( lgpio_write ) },
     { LSTRKEY( "read" ),			LFUNCVAL( lgpio_read ) },
     { LSTRKEY( "toggle" ),		LFUNCVAL( lgpio_toggle ) },
-		{ LSTRKEY( "delay" ),		  LFUNCVAL( lgpio_delay ) },
     
 		/* placeholders */
     {"IN",NULL},
     {"OUTPP",NULL},
 		{"OUTOD",NULL},
     {"AN",NULL},
+		
     {"UP",NULL},
     {"DOWN",NULL},
+		
+		{"HIGH",NULL},
+		{"LOW",NULL},
     
 		{"LED0",NULL},
 		{"LED1",NULL},
@@ -276,16 +279,21 @@ LUAMOD_API int luaopen_pio (lua_State *L)
     lua_setfield(L,-2,"IN");
     lua_pushinteger(L,LGPIO_OUTPUT_PP);
     lua_setfield(L,-2,"OUTPP");//lua对下划线的支持不太好，命名不要用下划线
-	 lua_pushinteger(L,LGPIO_OUTPUT_OD);
+	  lua_pushinteger(L,LGPIO_OUTPUT_OD);
     lua_setfield(L,-2,"OUTOD");
     lua_pushinteger(L,LGPIO_ANALOG);
     lua_setfield(L,-2,"AN");
     lua_pushinteger(L,LGPIO_PULLUP);
-    lua_setfield(L,-2,"UP");
+    lua_setfield(L,-2,"PULLUP");
     lua_pushinteger(L,LGPIO_PULLDOWN);
-    lua_setfield(L,-2,"DOWN");
+    lua_setfield(L,-2,"PULLDOWN");
 	  lua_pushinteger(L,LGPIO_PULLNO);
-    lua_setfield(L,-2,"NONE");
+    lua_setfield(L,-2,"PULLNO");
+	
+	  lua_pushinteger(L,LGPIO_STATE_HIGH);
+    lua_setfield(L,-2,"HIGH");
+	  lua_pushinteger(L,LGPIO_STATE_LOW);
+    lua_setfield(L,-2,"LOW");
     
     lua_pushinteger(L,PIO_LED0);
     lua_setfield(L,-2,"LED0");  

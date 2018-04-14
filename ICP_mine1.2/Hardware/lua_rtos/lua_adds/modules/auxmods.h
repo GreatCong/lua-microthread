@@ -17,9 +17,9 @@ LUALIB_API int ( luaopen_pio )( lua_State *L );
 //#define AUXLIB_CAN      "can"
 //LUALIB_API int ( luaopen_can )( lua_State *L );
 //
-//#define AUXLIB_TMR      "tmr"
-//LUALIB_API int ( luaopen_tmr )( lua_State *L );
-//
+#define AUXLIB_TMR      "tmr"
+LUALIB_API int ( luaopen_tmr )( lua_State *L );
+
 //#define AUXLIB_PD       "pd"
 //LUALIB_API int ( luaopen_pd )( lua_State *L );
 //
@@ -64,6 +64,10 @@ LUALIB_API int (luaopen_thread) (lua_State* L);
 //
 //#define AUXLIB_PACK "pack"
 //LUALIB_API int (luaopen_pack) (lua_State* L);
+#define AUXLIB_MACHINE      "machine"
+LUALIB_API int ( luaopen_machine )( lua_State *L );
+
+LUALIB_API void (luaL_openHardwarelibs) (lua_State *L);//open all hardware libs
 
 // Helper macros
 #define MOD_CHECK_ID( mod, id )\

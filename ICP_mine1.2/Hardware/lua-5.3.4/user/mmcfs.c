@@ -175,7 +175,7 @@ long mmc_lseek(int handle, long offset, int whence)
 {
   
   FIL* pfile = mmcfs_fd_table + handle;
-  long newpos = 0;
+  FSIZE_t newpos = 0;
 
   switch( whence )
   {
@@ -186,13 +186,13 @@ long mmc_lseek(int handle, long offset, int whence)
 
     case SEEK_CUR:
       // seek from current position
-      newpos = pfile->fptr + offset;
+      newpos = f_tell(pfile) + offset;
       break;
 
     case SEEK_END:
       // seek from end of file
 //      newpos = pfile->fsize + offset;
-		newpos = pfile->obj.objsize + offset;
+		newpos = f_size(pfile) + offset;
       break;
 
     default:
@@ -211,7 +211,19 @@ long mmc_file_len(int handle)
 {
 	FIL* pfile = mmcfs_fd_table + handle;
 //	return pfile->fsize;
-	return pfile->obj.objsize;
+//	return pfile->obj.objsize;
+	return f_size(pfile);
+}
+
+// @ function: mmc_ltell
+// @ description:
+// @ input:
+// @ note:
+long mmc_ltell(int handle)
+{
+	FIL* pfile = mmcfs_fd_table + handle;
+	
+	return f_tell(pfile);
 }
 
 // @ function: mmcfs_init
@@ -237,8 +249,9 @@ int mmcfs_init(void)
 // @ input:
 // @ note:
 int mmcfs_feof(int handle){
-  if (f_eof(mmcfs_fd_table + handle))//end
-		return 1;
-	else
-		return 0;
+//  if (f_eof(mmcfs_fd_table + handle))//end
+//		return 1;
+//	else
+//		return 0;
+	return f_eof(mmcfs_fd_table + handle);
 }

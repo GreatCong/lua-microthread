@@ -26,8 +26,6 @@
 
 #include "lauxlib.h"
 
-#include "my_malloc.h"//add mine
-
 /*
 ** {======================================================
 ** Traceback
@@ -1013,12 +1011,12 @@ static void *l_alloc (void *ud, void *ptr, size_t osize, size_t nsize) {
   (void)ud; (void)osize;  /* not used */
   if (nsize == 0) {
     //free(ptr);
-		myfree(SRAMCCM,ptr);
+		MY_LUA_FREE(ptr);
     return NULL;
   }
   else
 //    return realloc(ptr, nsize);
-	return myrealloc(SRAMCCM,ptr, nsize);
+	return MY_LUA_REALLOC(ptr, nsize);
 }
 
 

@@ -38,6 +38,12 @@ int sleep(int secs) {
 	return 0;
 }
 
+int msleep(int msec) {
+	vTaskDelay((TickType_t)1000 / configTICK_RATE_HZ);
+
+	return 0;
+}
+
 int usleep(int usec) {
 	vTaskDelay(usec / ((TickType_t)1000000 / configTICK_RATE_HZ));
 
