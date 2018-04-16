@@ -46,7 +46,11 @@
 //add by lcj
 typedef void(*sig_t)(int);
 //add by lcj
+#if LUA_USE_CMSISOS
 #define tskDEF_PRIORITY  configMAX_PRIORITIES/2				//Default task priority 0
+#else
+#define tskDEF_PRIORITY  LUA_CONF_PriorityNormal	
+#endif
 #define CONFIG_LUA_RTOS_LUA_TASK_PRIORITY tskDEF_PRIORITY
 #define CONFIG_LUA_RTOS_LUA_THREAD_STACK_SIZE 1024 //Default lua stack
 #define LUA_TASK_PRIO_MIN tskIDLE_PRIORITY

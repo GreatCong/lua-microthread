@@ -112,6 +112,7 @@
 "icp_mine1.2\my_malloc.o"
 "icp_mine1.2\xprint_init.o"
 "icp_mine1.2\xprintf.o"
+"icp_mine1.2\my_debug.o"
 "icp_mine1.2\attr.o"
 "icp_mine1.2\cleanup.o"
 "icp_mine1.2\cond.o"

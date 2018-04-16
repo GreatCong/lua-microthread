@@ -811,3 +811,41 @@ int do_file_script1(char *filename)
 	return 0;
 }
 
+#include "my_debug.h"
+// @ function: 
+// @ description:lua do_file using fopen
+// @ input:
+// @ note:
+int Lua_dofile_script(const char *filename)
+{
+	
+	lua_State *L;
+	int ret = LUA_OK;
+	
+	L = luaL_newstate(); /* 建立Lua运行环境 */
+	if (L == NULL) {
+    l_message(clean_filename(__FILE__), "cannot create state: not enough memory");
+    return -1;
+  }
+//	printf("%s,%s,%s",__FILE__,__DATE__,__TIME__);
+	
+	luaL_checkversion(L);  /* check that interpreter has correct version */
+	luaL_openlibs(L); /* open standard libraries */
+	luaL_openlibs(L);  /* open standard libraries */
+  luaL_openHardwarelibs(L); /* open hardware libraries */
+//	print_version();
+	
+	ret = dofile(L, filename); /* 运行Lua脚本 */
+	
+	report(L, ret);//打印错误报告,返回值也是ret
+	
+	lua_close(L);
+	
+	if(ret != LUA_OK){
+		return -1;
+	}
+	
+	return 0;
+}
+
+

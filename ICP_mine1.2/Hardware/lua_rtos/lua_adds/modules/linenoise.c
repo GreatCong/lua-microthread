@@ -130,8 +130,8 @@ static int io_putchars(int _FileHandle,void const* Buf,unsigned int _MaxCharCoun
 //	HAL_UART_Transmit(&huart6,(uint8_t*)Buf,_MaxCharCount,5);
 	char* a=(char*)Buf;
   for(int i=0;i<_MaxCharCount;i++){
-	 while((USART6->SR&0X40)==0);//循环发送,直到发送完毕   
-		USART6->DR = *(a++);   
+	 while((LUA_OUTPUT_UART->SR&0X40)==0);//循环发送,直到发送完毕   
+		LUA_OUTPUT_UART->DR = *(a++);   
 	}
 	return _MaxCharCount;
 }
@@ -140,8 +140,8 @@ static int io_getchars(int _FileHandle,void*  _DstBuf,unsigned int _MaxCharCount
 //  HAL_UART_Receive(&huart6,(uint8_t*)_DstBuf,_MaxCharCount,5000);
 	char* a=(char*)_DstBuf;
 	for(int i=0;i<_MaxCharCount;i++){
-		while(0==(USART6->SR&0X0020));
-		a[i] = USART6->DR;
+		while(0==(LUA_INPUT_UART->SR&0X0020));//会阻塞CPU
+		a[i] = LUA_INPUT_UART->DR;
 	}
 	return _MaxCharCount;
 }

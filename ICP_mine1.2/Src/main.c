@@ -98,7 +98,8 @@ static void LuaTask(void *pvParameters) {
 	}
 }
 
-#define mainCHECK_TASK_PRIORITY			( configMAX_PRIORITIES/2 )
+#define lUA_BOOT_TASK_PRIORITY			( configMAX_PRIORITIES/2 )
+#define lUA_BOOT_TASK_STACK 2048
 /* USER CODE END 0 */
 
 /**
@@ -164,7 +165,7 @@ int main(void)
 		 xprintf("none SD scard!\r\n");
 	 }
 	 
-	 xTaskCreate(LuaTask, "LuaTask", configMINIMAL_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, NULL);
+	 xTaskCreate(LuaTask, "LuaTask", lUA_BOOT_TASK_STACK, NULL, lUA_BOOT_TASK_PRIORITY, NULL);//里面包含了文件的读写
 //	 do_file_script1("autorun.lua");//测试lua SD卡读入
 	
 //	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_4);
@@ -307,6 +308,7 @@ void _Error_Handler(char *file, int line)
   /* User can add his own implementation to report the HAL error return state */
   while(1) 
   {
+		printf("_Error_Handler: file %s on line %d\r\n", file, line);
 		HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
 		HAL_Delay(10000);
   }

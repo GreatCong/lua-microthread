@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "my_debug.h"
+
 
 #define WIFI_SPI                             SPI3
 
@@ -112,23 +114,21 @@ void WIFI_SPI_Init(void);
 
 #endif
 
-#define   DEBUG 
-
-#ifdef DEBUG
-static const char* clean_filename(const char* path)
-{
-    const char* filename = path + strlen(path); 
-    while(filename > path)
-    {
-        if(*filename == '/' || *filename == '\\')
-        {
-            return filename + 1;
-        }
-        filename--;
-    }
-    return path;
-}
-#endif
+//#ifdef WIFI_DEBUG
+//static const char* clean_filename(const char* path)
+//{
+//    const char* filename = path + strlen(path); 
+//    while(filename > path)
+//    {
+//        if(*filename == '/' || *filename == '\\')
+//        {
+//            return filename + 1;
+//        }
+//        filename--;
+//    }
+//    return path;
+//}
+//#endif
 
 
 
@@ -163,7 +163,7 @@ static inline void p_unlock_mutex(osMutexId mutex)
     osMutexRelease(mutex);
 }
 
-#ifdef DEBUG
+#if WIFI_DEBUG
 //#define DPRINTF(fmt, args...) printf(fmt, ##args)
 // #define DPRINTF(fmt, args...) do { \
 //                                    p_lock_mutex(buf_mutex); \

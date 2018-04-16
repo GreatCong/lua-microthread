@@ -69,9 +69,12 @@ extern const char *__progname;
 // #include "math.h"
 
 //add by lcj
-#ifndef luaTaskStack
-#define luaTaskStack 192 * 5
-#endif 
+//#ifndef luaTaskStack
+//#define luaTaskStack 192 * 5
+//#endif 
+extern int Lua_dofile_script(const char *filename);
+int luaTaskStack = LUA_MAINSTACK_DEF;
+int luaTaskStack_init=0;
 //add by lcj END
 
 int luaos_main(void);
@@ -114,6 +117,39 @@ void mach_init() {
 //
 //	mach_dev();
 }
+
+static void lua_boot(void){
+	int  system;
+  FILE *fp;
+  int i;
+  const char *system_order[2];
+  printf("\r\nluaos_boot_scripts...\r\n");
+	
+   system_order[0] = "/system.lua";
+   system_order[1] = NULL;
+
+    printf("\r\n");
+    
+    // Ecexute system script
+    system = -1;
+    for(i = 0; i < sizeof(system_order) / sizeof(*system_order); i++) {
+        if (system_order[i]) {
+					fp = fopen(system_order[i], "r" );
+            if (fp) {
+                fclose(fp);
+                system = i;
+                break;
+            }            
+        }
+    }
+    
+    if (system >=0) {
+        printf("Executing %s ...\n", system_order[system]);
+        Lua_dofile_script(system_order[system]);
+    }    
+    
+    printf("\r\n");
+}
 //add by lcj end
 
 void lua_app_main(void) {
@@ -123,11 +159,21 @@ void lua_app_main(void) {
 	int res;
 
 	mach_init();
+	luaTaskStack_init = 0;
+	lua_boot();//启动需要2048的堆栈 测试为4400byte
 
 	debug_free_mem_begin(lua_main_thread);//lua_main_thread是表示返回值，是对堆的检查
 
 	pthread_attr_init(&attr);
+	
+	#if LUA_USE_CMSISOS
+	struct sched_param param; //PC机不做设置
+	param.sched_priority = LUA_CONF_PriorityBelowNormal;	
+	pthread_attr_setschedparam(&attr,&param);
+	#endif
+
 	pthread_attr_setstacksize(&attr, luaTaskStack);
+	luaTaskStack_init = 1;
 
 	res = pthread_create(&thread, &attr, lua_start, NULL);
 	if (res) {

@@ -79,6 +79,8 @@ int _pthread_create(pthread_t *id, int priority, int stacksize, int initial_stat
     struct pthread *thread;
     struct pthread *parent_thread;
     int current_thread, i;
+	
+	  char pthread_name[10]="";//add by lcj
     
     // Set pthread arguments for creation
     taskArgs = (struct pthreadTaskArg *)malloc(sizeof(struct pthreadTaskArg));
@@ -142,7 +144,10 @@ int _pthread_create(pthread_t *id, int priority, int stacksize, int initial_stat
     //        pthreadTask, "lthread", stacksize, taskArgs, 
     //        tskDEF_PRIORITY, &xCreatedTask
     //);
-	res = xTaskCreate(pthreadTask, "lthread", stacksize, taskArgs, priority, &xCreatedTask);//add by lcj
+
+		sprintf(pthread_name,"lthread%d",*id);
+		res = xTaskCreate(pthreadTask, pthread_name, stacksize, taskArgs, priority, &xCreatedTask);//add by lcj
+//	res = xTaskCreate(pthreadTask, "lthread", stacksize, taskArgs, priority, &xCreatedTask);//add by lcj
    
     if(res != pdPASS) {
         // Remove from thread list

@@ -9,6 +9,13 @@
 
 #include <unistd.h>
 
+#if LUA_USE_THREAD
+#include "FreeRTOS.h"
+#include "Task.h"
+extern int luaTaskStack;
+extern int luaTaskStack_init;
+#endif
+
 int lua_history_on = HISTORY_DEFAULT_STATE;
 
 //static int os_lua_running(lua_State *L) { 
@@ -65,10 +72,76 @@ static int os_version(lua_State *L) {
    return 3;
 }
 
+#if LUA_USE_THREAD
+static int os_get_mainstack(lua_State *L) { 
+    lua_pushinteger(L, luaTaskStack); 
+	
+    return 1;
+}
+
+static int os_set_mainstack(lua_State *L) {
+    int stack;
+    stack = luaL_checkinteger( L, 1 );
+    if(luaTaskStack_init){
+		   return luaL_error(L, "luaTaskStack_init=true,luaTaskStack=%d",luaTaskStack);
+		} 	
+    if(luaTaskStack < configMINIMAL_STACK_SIZE){
+		   return luaL_error(L, "param error!");
+		} 	
+
+		luaTaskStack = stack;
+	
+    return 0;
+}
+
+static int os_get_allTask(lua_State *L) {
+	TaskStatus_t *statusArray;
+	UBaseType_t task_num;
+		
+	uint32_t TotalRunTime;
+	int arraySize = 0;
+
+	task_num = uxTaskGetNumberOfTasks();      //获取任务数量
+	printf("find %ld tasks in total!\r\n", task_num);
+
+	statusArray = pvPortMalloc(task_num*sizeof(TaskStatus_t));//申请内存
+	if(statusArray!=NULL)                   //内存申请成功
+	{
+			arraySize=uxTaskGetSystemState((TaskStatus_t*   )statusArray,   //任务信息存储数组
+																		 (UBaseType_t     )task_num,  //任务信息存储数组大小
+																		 (uint32_t*       )&TotalRunTime);//保存系统总的运行时间
+			assert_param(arraySize);
+		  printf("********************Task Message Table*********************\r\n\r\n");
+			printf("    TaskName\tPriority\tTaskNumber\tTaskFree\t\r\n");
+			for( int x=0;x < task_num;x++)
+			{
+					printf("%12s\t%4d\t\t%4d\t\t%4d\t\r\n\r\n",                
+									statusArray[x].pcTaskName, //任务名称
+									(int)statusArray[x].uxCurrentPriority, //任务优先级
+									(int)statusArray[x].xTaskNumber, //任务编号
+									statusArray[x].usStackHighWaterMark);
+
+			}
+	}
+	else
+	{
+     return luaL_error(L, "not enough memory!");
+	}
+   vPortFree(statusArray); //释放内存
+   return 0;
+}
+#endif
+
+
 static const LUA_REG_TYPE machine_map[] = {
     { LSTRKEY( "history" ),			LFUNCVAL( os_history ) },
     { LSTRKEY( "version" ),			LFUNCVAL( os_version ) },
 		{ LSTRKEY( "clclog" ),			LFUNCVAL( os_clear_history ) },
+		#if LUA_USE_THREAD
+		{ LSTRKEY( "setmainstack" ),			LFUNCVAL( os_set_mainstack ) },
+		{ LSTRKEY( "getmainstack" ),			LFUNCVAL( os_get_mainstack ) },
+		{ LSTRKEY( "gettask" ),			      LFUNCVAL( os_get_allTask ) },
+		#endif
     { LNILKEY, LNILVAL }
 };
 
