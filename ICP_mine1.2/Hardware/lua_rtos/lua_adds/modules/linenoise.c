@@ -123,6 +123,16 @@
 #define LINENOISE_MAX_LINE LUA_MAXINPUT
 
 //add by lcj
+
+#if LUA_USE_RUNRTOS 
+//如果有线程就用事件标志组
+#include "FreeRTOS.h"
+#include "event_groups.h"
+#define BIT_0	( 1 << 0 )
+extern EventGroupHandle_t Lua_groupGets_handle;
+const int Lua_iogets_Bit = BIT_0;
+#endif
+
 #define STDIN_FILENO 0
 #define STDOUT_FILENO 1
 #include "usart.h"
@@ -136,12 +146,32 @@ static int io_putchars(int _FileHandle,void const* Buf,unsigned int _MaxCharCoun
 	return _MaxCharCount;
 }
 
+//static int io_getchars(int _FileHandle,void*  _DstBuf,unsigned int _MaxCharCount){
+////  HAL_UART_Receive(&huart6,(uint8_t*)_DstBuf,_MaxCharCount,5000);
+//	char* a=(char*)_DstBuf;
+//	for(int i=0;i<_MaxCharCount;i++){
+//		while(0==(LUA_INPUT_UART->SR&0X0020));//会阻塞CPU
+//		a[i] = LUA_INPUT_UART->DR;
+//	}
+//	return _MaxCharCount;
+//}
+
+
 static int io_getchars(int _FileHandle,void*  _DstBuf,unsigned int _MaxCharCount){
 //  HAL_UART_Receive(&huart6,(uint8_t*)_DstBuf,_MaxCharCount,5000);
-	char* a=(char*)_DstBuf;
+	uint8_t* a=(uint8_t*)_DstBuf;
+	EventBits_t event_bit;
 	for(int i=0;i<_MaxCharCount;i++){
-		while(0==(LUA_INPUT_UART->SR&0X0020));//会阻塞CPU
-		a[i] = LUA_INPUT_UART->DR;
+		#if LUA_USE_RUNRTOS
+		HAL_UART_Receive_IT(&huart6, a++, 1); //中断接收1次
+		event_bit = xEventGroupWaitBits(Lua_groupGets_handle,Lua_iogets_Bit,false,true,portMAX_DELAY);
+		xEventGroupClearBits(Lua_groupGets_handle,Lua_iogets_Bit);
+		if(event_bit == pdFAIL) //如果超时，清标志，返回-1
+			return -1;
+		#else //否则就用循环查询方式
+		while(0==(LUA_INPUT_UART->SR&0X0020));//会阻塞CPU!!
+    a[i] = LUA_INPUT_UART->DR;
+		#endif		
 	}
 	return _MaxCharCount;
 }
@@ -150,6 +180,18 @@ static int io_getchars(int _FileHandle,void*  _DstBuf,unsigned int _MaxCharCount
 #define write io_putchars
 #define EAGAIN          11
 
+#if LUA_USE_RUNRTOS 
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){//串口接收中断回调
+  if (huart->Instance == USART6)  {
+		BaseType_t Result,xHigherPriorityTaskWoken;
+		Result=xEventGroupSetBitsFromISR(Lua_groupGets_handle,Lua_iogets_Bit,&xHigherPriorityTaskWoken);//需要设置OS为use_timers
+			if(Result!=pdFAIL)
+			{
+				portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+			}		
+    }
+}
+#endif
 //add by lcj end
 
 

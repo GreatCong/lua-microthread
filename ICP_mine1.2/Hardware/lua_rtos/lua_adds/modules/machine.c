@@ -9,7 +9,7 @@
 
 #include <unistd.h>
 
-#if LUA_USE_THREAD
+#if LUA_USE_RUNRTOS
 #include "FreeRTOS.h"
 #include "Task.h"
 extern int luaTaskStack;
@@ -72,7 +72,7 @@ static int os_version(lua_State *L) {
    return 3;
 }
 
-#if LUA_USE_THREAD
+#if LUA_USE_RUNRTOS
 static int os_get_mainstack(lua_State *L) { 
     lua_pushinteger(L, luaTaskStack); 
 	
@@ -103,6 +103,7 @@ static int os_get_allTask(lua_State *L) {
 
 	task_num = uxTaskGetNumberOfTasks();      //获取任务数量
 	printf("find %ld tasks in total!\r\n", task_num);
+	printf("memory free/total:%d / %d Byte\r\n\r\n",xPortGetFreeHeapSize(),configTOTAL_HEAP_SIZE);
 
 	statusArray = pvPortMalloc(task_num*sizeof(TaskStatus_t));//申请内存
 	if(statusArray!=NULL)                   //内存申请成功
@@ -115,7 +116,7 @@ static int os_get_allTask(lua_State *L) {
 			printf("    TaskName\tPriority\tTaskNumber\tTaskFree\t\r\n");
 			for( int x=0;x < task_num;x++)
 			{
-					printf("%12s\t%4d\t\t%4d\t\t%4d\t\r\n\r\n",                
+					printf("%12s\t%4d\t\t%4d\t\t%4d\t\r\n",                
 									statusArray[x].pcTaskName, //任务名称
 									(int)statusArray[x].uxCurrentPriority, //任务优先级
 									(int)statusArray[x].xTaskNumber, //任务编号
@@ -137,10 +138,10 @@ static const LUA_REG_TYPE machine_map[] = {
     { LSTRKEY( "history" ),			LFUNCVAL( os_history ) },
     { LSTRKEY( "version" ),			LFUNCVAL( os_version ) },
 		{ LSTRKEY( "clclog" ),			LFUNCVAL( os_clear_history ) },
-		#if LUA_USE_THREAD
+		#if LUA_USE_RUNRTOS
 		{ LSTRKEY( "setmainstack" ),			LFUNCVAL( os_set_mainstack ) },
 		{ LSTRKEY( "getmainstack" ),			LFUNCVAL( os_get_mainstack ) },
-		{ LSTRKEY( "gettask" ),			      LFUNCVAL( os_get_allTask ) },
+		{ LSTRKEY( "tasklist" ),			    LFUNCVAL( os_get_allTask ) },
 		#endif
     { LNILKEY, LNILVAL }
 };

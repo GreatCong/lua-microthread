@@ -19,6 +19,7 @@ static const luaL_Reg loaded_hardware_libs[] = {
 	LINIT_REG_PIO//add by lcj
 	LINIT_REG_TMR//add by lcj
 	LINIT_REG_MACHINE //add by lcj
+	LINIT_REG_WIFI
 	
   {NULL, NULL}
 };

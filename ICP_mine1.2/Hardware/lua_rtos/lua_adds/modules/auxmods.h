@@ -66,6 +66,8 @@ LUALIB_API int (luaopen_thread) (lua_State* L);
 //LUALIB_API int (luaopen_pack) (lua_State* L);
 #define AUXLIB_MACHINE      "machine"
 LUALIB_API int ( luaopen_machine )( lua_State *L );
+#define AUXLIB_WIFI      "wifi"
+LUALIB_API int ( luaopen_wifi )( lua_State *L );
 
 LUALIB_API void (luaL_openHardwarelibs) (lua_State *L);//open all hardware libs
 

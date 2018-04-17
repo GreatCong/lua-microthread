@@ -27,10 +27,12 @@ PA2 -O- ICP_EN
 */
 
 //配置读取的通道
-#define AD_CH1 1
-#define AD_CH2 1<<1
-#define AD_CH3 1<<2
-//#define AD_CH4 1<<3
+//#define AD_CH1 1
+//#define AD_CH2 1<<1
+//#define AD_CH3 1<<2
+#define AD_CH4 1<<3
+
+#define AD_USE_RST 0//新板子有RST功能
 
 #include "my_task.h"//包含一些宏定义
 
@@ -65,7 +67,11 @@ Elemtype myAD_buff[AD_QUEUE_SIZE] = {0};//要根据实际速度更改
 #define OS0(State)	HAL_GPIO_WritePin(AD_OS0_GPIO_Port,AD_OS0_Pin,(GPIO_PinState)State)
 #define SPI_CS(State)	HAL_GPIO_WritePin(AD_CS_GPIO_Port,AD_CS_Pin,(GPIO_PinState)State)
 
-#define AD_RST(State)	HAL_GPIO_WritePin(BT_EN_GPIO_Port,BT_EN_Pin,(GPIO_PinState)State);
+#if AD_USE_RST //由于旧板子没有rst功能,为兼容旧板子
+#define AD_RST(State)	HAL_GPIO_WritePin(BT_EN_GPIO_Port,BT_EN_Pin,(GPIO_PinState)State)
+#else
+#define AD_RST(State) 
+#endif
 
 union _AD7606_BUF AD7606_BUF;
 

@@ -134,6 +134,7 @@
 "icp_mine1.2\tmr.o"
 "icp_mine1.2\machine.o"
 "icp_mine1.2\lhardwrae.o"
+"icp_mine1.2\lwifilib.o"
 "icp_mine1.2\usleep.o"
 "icp_mine1.2\lua_test_thread.o"
 --library_type=microlib --strict --scatter "ICP_mine1.2\ICP_mine1.sct"

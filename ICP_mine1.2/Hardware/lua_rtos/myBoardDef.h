@@ -38,10 +38,15 @@
 //#define UNUSED_ARG(x) (void)(x)
 
 /*********** lua modules ****************/
+#define LUA_USE_RUNRTOS 1
+
+#if LUA_USE_RUNRTOS //thread依赖于OS
 #define LUA_USE_THREAD 1 //add by lcj	
+#endif
 #define LUA_USE_PIO 1 //add by lcj	
 #define LUA_USE_TMR 1
 #define LUA_USE_MACHINE 1
+#define LUA_USE_WIFI 1
 
 #define LUA_USE_HISTORY 1
 #define LUA_USE_XPRINTF 0
@@ -54,6 +59,7 @@
 /************** default define **************************/
 #define HISTORY_DEFAULT_STATE 0 //history log
 #define LUA_MAINSTACK_DEF 1024 //lua main stack
+#define WIFI_DEFAULT_STATE 0
 
 #if LUA_USE_CMSISOS
 //模拟cmsis_os优先级

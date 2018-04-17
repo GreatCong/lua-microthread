@@ -19,6 +19,10 @@
 #include "lua_test.h"
 
 #define SIZE 53
+//#define MY_TCP_SERVER_PORT 6001
+//#define MY_TCP_SERVER_IP 0xC0A81701 //192.168.23.1 笔记本模拟的
+#define MY_TCP_SERVER_PORT 60090
+#define MY_TCP_SERVER_IP 0xC0A88901 //192.168.137.1 台式机模拟的
 
 //typedef uint8_t Elemtype;
 typedef int16_t Elemtype;	
@@ -35,7 +39,8 @@ const Elemtype myAD_test_data1[60]={0x258,0x28c,0x2bf,0x2f2,0x323,0x351,0x37d,0x
 //#define AD_QUEUE_SIZE 1200
 extern QueueArray_type myAD_queue;
 Elemtype my_send[AD_QUEUE_SIZE+100] = {0};
-
+extern int Lua_wifi_on;//in lua wifi lib
+extern osThreadId appTaskHandle;
 /************************************
 // Method:    platform_init
 // Date:  	  2016/06/27
@@ -132,11 +137,11 @@ void StartAppTask(void const * argument)
 //        rw_sysSleep(100);
 
 //    }
-//   test_netWorkTask();
-	 for(;;)
-  {
-    osDelay(5000);
-  }
+   test_netWorkTask();
+//	 for(;;)
+//  {
+//    osDelay(5000);
+//  }
   /* USER CODE END StartAppTask */
 }
 
@@ -179,6 +184,12 @@ void StartInquireTask(void const * argument)//不断查询的Task,优先级为High
 			HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4);
 			buf=0;
       AD_rst_handle();		
+		}
+		
+		if(Lua_wifi_on > 0){
+		    osThreadDef(appTask, StartAppTask, osPriorityAboveNormal, 0, 256);
+        appTaskHandle = osThreadCreate(osThread(appTask), NULL);
+			  Lua_wifi_on = -1;//-1表示初始化过了
 		}
 		osDelay(10);
   }
@@ -342,7 +353,7 @@ reconnect:
 
 		if (app_demo_ctx.tcp_cloud_sockfd == INVAILD_SOCK_FD)
 		{
-			if((ret =RAK_TcpClient(6001, 0xC0A81701)) >= 0)//192.168.23.1
+      if((ret =RAK_TcpClient(MY_TCP_SERVER_PORT, MY_TCP_SERVER_IP)) >= 0)//192.168.23.1 笔记本模拟的
 			//if((ret =RAK_TcpClient(25001, 0xC0A80389)) >= 0)
 			{
 				app_demo_ctx.tcp_cloud_sockfd = ret;
@@ -419,7 +430,7 @@ int creat_tcpcTask1(void)
 
 	xRet =xTaskCreate(RAK_TcpClient_EventHandle1, 
 		"TcpClient", 
-		configMINIMAL_STACK_SIZE * 2, 
+		configMINIMAL_STACK_SIZE * 4, 
 		NULL, 
 		RW_TCPC_TASK_PRIO, 
 		&g_tcpclient_task1); 

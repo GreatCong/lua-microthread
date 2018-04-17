@@ -195,11 +195,11 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of appTask */
-  osThreadDef(appTask, StartAppTask, osPriorityAboveNormal, 0, 256);
-  appTaskHandle = osThreadCreate(osThread(appTask), NULL);
+//  osThreadDef(appTask, StartAppTask, osPriorityAboveNormal, 0, 256);
+//  appTaskHandle = osThreadCreate(osThread(appTask), NULL);
 
   /* definition and creation of test_Task */
-  osThreadDef(test_Task, StartTest_Task, osPriorityNormal, 0, 1024);
+  osThreadDef(test_Task, StartTest_Task, osPriorityNormal, 0, 128);
   test_TaskHandle = osThreadCreate(osThread(test_Task), NULL);
 
   /* definition and creation of inquire */

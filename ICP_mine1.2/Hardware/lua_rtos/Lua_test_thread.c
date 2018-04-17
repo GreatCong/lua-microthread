@@ -31,6 +31,7 @@
 #include "task.h"
 #include "portable.h"
 #include "timers.h"
+#include "event_groups.h"
 //#include "lua.h"
 
 //#include <machine/pic32mz.h>
@@ -75,6 +76,7 @@ extern const char *__progname;
 extern int Lua_dofile_script(const char *filename);
 int luaTaskStack = LUA_MAINSTACK_DEF;
 int luaTaskStack_init=0;
+EventGroupHandle_t Lua_groupGets_handle;
 //add by lcj END
 
 int luaos_main(void);
@@ -103,6 +105,7 @@ extern void _pthread_init(void);
 extern void _mtx_init(void);
 
 void mach_init() {
+	Lua_groupGets_handle = xEventGroupCreate();//设置串口接收时间标志
 	//resource_init();
 	_mtx_init();
 	_pthread_init();

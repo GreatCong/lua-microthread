@@ -13,6 +13,13 @@
 **/
 #include "rw_app.h"
 
+//wifi configs
+#define CONFIG_WIFI_AP_SSID "RAK_AP"
+#define CONFIG_WIFI_AP_PASSWORD "1234567890"
+#define CONFIG_WIFI_STA_SSID "TP_LINK_Soft"
+#define CONFIG_WIFI_STA_PASSWORD "Soft12345678"
+//wifi configs end
+
 RW_APP_CTX         app_demo_ctx;
 
 void rw_appdemo_context_init(void)
@@ -78,8 +85,10 @@ int rw_network_startAP(void)
 
 	memset(&conn, 0, sizeof(conn));
 	conn.role_mode = ROLE_AP;
-	conn.ssid = "RAK_AP";
-	conn.psk = "1234567890";
+//	conn.ssid = "RAK_AP";
+//	conn.psk = "1234567890";
+	conn.ssid = CONFIG_WIFI_AP_SSID;
+	conn.psk = CONFIG_WIFI_AP_PASSWORD;
 	conn.pmk = NULL;    //set NULL
 	conn.channel = 6;
 	conn.sec_mode = RW_SEC_TYPE_SEC;
@@ -107,8 +116,10 @@ int rw_network_startSTA(void)
 
 	memset(&conn, 0, sizeof(conn));
 	conn.role_mode = ROLE_STA;
-	conn.ssid = "app-test";//"RAK_Wireless"  "1HEA-PC_Network_4" "mw_raktest""D-Link_DIR-600M"
-	conn.psk = "aptest12345";
+//	conn.ssid = "app-test";//"RAK_Wireless"  "1HEA-PC_Network_4" "mw_raktest""D-Link_DIR-600M"
+//	conn.psk = "aptest12345";
+	conn.ssid = CONFIG_WIFI_STA_SSID;//"RAK_Wireless"  "1HEA-PC_Network_4" "mw_raktest""D-Link_DIR-600M"
+	conn.psk = CONFIG_WIFI_STA_PASSWORD;
 	conn.pmk = NULL; //ap_pmk;NULL;
 	conn.channel = 0;
 	conn.sec_mode = RW_SEC_TYPE_SEC;

@@ -194,12 +194,18 @@ linit 注册Lua
 #else
     #define LINIT_REG_LORA
 #endif
-		
+//add 		
 #if LUA_USE_MACHINE //包含shell等信息
     #define LINIT_REG_MACHINE {AUXLIB_MACHINE, luaopen_machine},
 #else
     #define LINIT_REG_MACHINE
 #endif
+#if LUA_USE_WIFI //包含shell等信息
+    #define LINIT_REG_WIFI {AUXLIB_WIFI, luaopen_wifi},
+#else
+    #define LINIT_REG_WIFI
+#endif
+//add end
 
 #define LINIT_REG_ADDS \
   LINIT_REG_PIO \

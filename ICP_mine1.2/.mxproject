@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/admin/Desktop/ICP_mine1.2 (1)/Inc
+HeaderPath=C:/Users/admin/Desktop/add-shell/ICP_mine1.2/Inc
 HeaderFiles=gpio.h;adc.h;FreeRTOSConfig.h;spi.h;tim.h;usart.h;stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;dma.h;usb_device.h;usbd_conf.h;usbd_desc.h;usbd_cdc_if.h;ffconf.h;bsp_driver_sd.h;sd_diskio.h;fatfs.h;sdio.h;
-SourcePath=C:/Users/admin/Desktop/ICP_mine1.2 (1)/Src
+SourcePath=C:/Users/admin/Desktop/add-shell/ICP_mine1.2/Src
 SourceFiles=gpio.c;adc.c;freertos.c;spi.c;tim.c;usart.c;stm32f4xx_it.c;stm32f4xx_hal_msp.c;stm32f4xx_hal_timebase_TIM.c;main.c;dma.c;usb_device.c;usbd_conf.c;usbd_desc.c;usbd_cdc_if.c;bsp_driver_sd.c;sd_diskio.c;fatfs.c;sdio.c;
 
 [PreviousLibFiles]
