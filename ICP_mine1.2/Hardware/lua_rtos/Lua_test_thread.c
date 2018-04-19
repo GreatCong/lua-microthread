@@ -152,6 +152,10 @@ static void lua_boot(void){
     }    
     
     printf("\r\n");
+		
+		#if LUA_USE_MYMALLOC
+		my_mem_init(LUA_MYMEM_ADDR);//重新初始化LUA_MYMEM_ADDR地址的内存(默认为CCM)
+		#endif
 }
 //add by lcj end
 

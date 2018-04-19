@@ -179,7 +179,7 @@ void wifi_init_params(rw_DriverParams_t* params)
     
     params->tcp_retry_num = 5;
     
-    params->socket_max_num = 1;
+    params->socket_max_num = 8;//最多建立8个socket
     
     params->country_code = "CN";
     

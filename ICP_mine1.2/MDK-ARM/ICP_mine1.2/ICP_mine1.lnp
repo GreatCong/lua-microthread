@@ -127,6 +127,7 @@
 "icp_mine1.2\panic_sys.o"
 "icp_mine1.2\status.o"
 "icp_mine1.2\list_sys.o"
+"icp_mine1.2\signal_sys.o"
 "icp_mine1.2\lua.o"
 "icp_mine1.2\lgpiolib.o"
 "icp_mine1.2\thread.o"

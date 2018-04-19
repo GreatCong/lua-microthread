@@ -59,7 +59,8 @@
 /************** default define **************************/
 #define HISTORY_DEFAULT_STATE 0 //history log
 #define LUA_MAINSTACK_DEF 1024 //lua main stack
-#define WIFI_DEFAULT_STATE 0
+//WIFI
+#define WIFI_DEFAULT_STATE 0 //WIFI init state
 
 #if LUA_USE_CMSISOS
 //模拟cmsis_os优先级

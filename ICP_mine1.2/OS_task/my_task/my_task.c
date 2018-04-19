@@ -334,12 +334,12 @@ void RAK_TcpClient_EventHandle1(void *p_arg)
 	int      temp_len;
 
 //	char* c_buffer = pvPortMalloc(MAX_RECV_PACKET_LEN);//RAK439 TCP MAX_RECV_PACKET_LEN=1024
-	Elemtype* c_buffer = pvPortMalloc(MAX_RECV_PACKET_LEN);//RAK439 TCP MAX_RECV_PACKET_LEN=1024
+//	Elemtype* c_buffer = pvPortMalloc(MAX_RECV_PACKET_LEN);//RAK439 TCP MAX_RECV_PACKET_LEN=1024
 
-	if(NULL == c_buffer){
-		DPRINTF("RAK_TcpClient: Allocate buffer failed.\n");
-		while(1);
-	}  
+//	if(NULL == c_buffer){
+//		DPRINTF("RAK_TcpClient: Allocate buffer failed.\n");
+//		while(1);
+//	}  
 
 	while(1)
 	{      

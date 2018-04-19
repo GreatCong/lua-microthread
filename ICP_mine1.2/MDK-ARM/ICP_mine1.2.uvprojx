@@ -1172,6 +1172,11 @@
               <FileType>5</FileType>
               <FilePath>..\Hardware\lua_rtos\sys\debug.h</FilePath>
             </File>
+            <File>
+              <FileName>signal_sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\sys\signal_sys.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

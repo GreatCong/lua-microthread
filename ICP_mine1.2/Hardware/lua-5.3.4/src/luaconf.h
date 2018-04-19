@@ -19,8 +19,9 @@
 #endif
 #if LUA_USE_MYMALLOC
 #include "my_malloc.h"//add mine
-#define MY_LUA_FREE(p) 		    myfree(SRAMCCM,p);
-#define MY_LUA_REALLOC(p,n) 	myrealloc(SRAMCCM,p, n);
+#define LUA_MYMEM_ADDR SRAMCCM //Ñ¡ÔñÔÚCCMÖÐ
+#define MY_LUA_FREE(p) 		    myfree(LUA_MYMEM_ADDR,p);
+#define MY_LUA_REALLOC(p,n) 	myrealloc(LUA_MYMEM_ADDR,p, n);
 #endif
 
 #ifndef MY_LUA_FREE

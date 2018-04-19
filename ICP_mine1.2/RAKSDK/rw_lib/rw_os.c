@@ -11,6 +11,8 @@
   * 
   ******************************************************************************
 **/
+#if 0 //hal库
+
 #include "rw_os.h"
 #include "cmsis_os.h"
 #include "bsp.h"
@@ -150,6 +152,143 @@ int rw_post_drv_sem(void* p_sem)
 
     }
     return RW_OS_OK;
+}
+#endif
+
+#include "rw_os.h"
+#include "cmsis_os.h"
+
+//#include "rw_app.h"
+
+//#define RW_DRIVER_TASK_PRIO  (tskIDLE_PRIORITY + 4)
+#define RW_DRIVER_TASK_PRIO (tskIDLE_PRIORITY + 5) //osPriorityHigh
+#define RW_DRIVER_TASK_STACK_SIZE configMINIMAL_STACK_SIZE * 7//(800>>2)
+
+
+void* rw_creat_task(RW_OS_TASK_PTR p_task)
+{
+    xTaskHandle p_tcb = NULL;
+    xTaskCreate(p_task, "wifi_task", RW_DRIVER_TASK_STACK_SIZE , NULL, RW_DRIVER_TASK_PRIO, &p_tcb);
+
+    return p_tcb;
+}
+
+int rw_del_task(void* p_tcb)
+{
+    vTaskDelete(p_tcb);
+    return RW_OS_OK;
+}
+
+void* rw_creat_mutex(void)
+{
+    SemaphoreHandle_t p_mutex;
+    p_mutex = xSemaphoreCreateMutex();
+    return (void *)p_mutex;
+}
+
+int rw_del_mutex(void* p_mutex)
+{
+    vSemaphoreDelete(p_mutex);
+    return RW_OS_OK;
+}
+
+int rw_lock_mutex(void* p_mutex, uint32_t timeout)
+{
+    if(p_mutex == NULL) {
+        return RW_OS_ERROR;
+    }
+    if (timeout ==0) {  //wait forever
+        timeout = portMAX_DELAY;
+    }
+
+    if(xSemaphoreTake(p_mutex,timeout) != pdPASS) {
+        return RW_OS_TIME_OUT;
+    }
+    return RW_OS_OK;
+}
+
+int rw_unlock_mutex(void* p_mutex)
+{
+    if(p_mutex == NULL) {
+        return RW_OS_ERROR;
+    }
+    if(xSemaphoreGive(p_mutex) != pdPASS) {
+        return RW_OS_ERROR;
+    }
+    return RW_OS_OK;
+}
+
+//与hal库不同的是采用了xSemaphoreCreateCounting
+void* rw_creat_sem(void)
+{
+    xSemaphoreHandle p_sem;
+    p_sem = xSemaphoreCreateCounting(0xffffffff,0);
+    return p_sem;
+}
+
+int rw_del_sem(void* p_sem)
+{
+    vSemaphoreDelete(p_sem);
+    return RW_OS_OK;
+}
+
+int rw_post_sem(void* p_sem)
+{
+    if(p_sem == NULL) {
+        return RW_OS_ERROR;
+    }
+
+    if(xSemaphoreGive(p_sem) != pdPASS) {
+        return RW_OS_ERROR;
+    }
+    return RW_OS_OK;
+}
+
+
+int rw_post_drv_sem(void* p_sem)
+{
+    portBASE_TYPE taskWoken = pdFALSE;
+
+    if(p_sem == NULL) {
+        return RW_OS_ERROR;
+    }
+
+    if (xSemaphoreGiveFromISR(p_sem, &taskWoken) != pdPASS) {
+        return RW_OS_ERROR;
+    }
+
+    if(taskWoken == pdTRUE) {
+        portEND_SWITCHING_ISR(taskWoken);
+
+    }
+    return RW_OS_OK;
+}
+
+
+int rw_pend_sem(void* p_sem, uint32_t timeout)
+{
+    if(p_sem == NULL) {
+        return RW_OS_ERROR;
+    }
+    if (timeout ==0) {  //wait forever
+        timeout = portMAX_DELAY;
+    }
+
+    if(xSemaphoreTake(p_sem,timeout) != pdPASS) {
+        return RW_OS_TIME_OUT;
+    }
+    return RW_OS_OK;
+}
+
+
+void rw_enter_critical()
+{
+		portENTER_CRITICAL();
+}
+
+void rw_exit_critical()
+{
+		portEXIT_CRITICAL();
 }
 
 
