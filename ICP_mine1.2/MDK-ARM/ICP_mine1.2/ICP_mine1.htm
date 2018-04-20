@@ -3,7 +3,7 @@
 <title>Static Call Graph - [ICP_mine1.2\ICP_mine1.2]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ICP_mine1.2\ICP_mine1.2</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Thu Apr 19 17:07:59 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Fri Apr 20 15:50:50 2018
 <BR><P>
 <H3>Maximum Stack Usage =      10040 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -151,7 +151,7 @@ Function Pointers
  <LI><a href="#[7a]">OTG_HS_WKUP_IRQHandler</a> from startup_stm32f405xx.o(.text) referenced from startup_stm32f405xx.o(RESET)
  <LI><a href="#[31]">PVD_IRQHandler</a> from startup_stm32f405xx.o(.text) referenced from startup_stm32f405xx.o(RESET)
  <LI><a href="#[2e]">PendSV_Handler</a> from port.o(.emb_text) referenced from startup_stm32f405xx.o(RESET)
- <LI><a href="#[95]">RAK_TcpClient_EventHandle1</a> from my_task.o(i.RAK_TcpClient_EventHandle1) referenced from my_task.o(i.creat_tcpcTask1)
+ <LI><a href="#[95]">RAK_TcpClient_EventHandle1</a> from tcp_udp_task.o(i.RAK_TcpClient_EventHandle1) referenced from tcp_udp_task.o(i.creat_tcpcTask1)
  <LI><a href="#[35]">RCC_IRQHandler</a> from startup_stm32f405xx.o(.text) referenced from startup_stm32f405xx.o(RESET)
  <LI><a href="#[59]">RTC_Alarm_IRQHandler</a> from startup_stm32f405xx.o(.text) referenced from startup_stm32f405xx.o(RESET)
  <LI><a href="#[33]">RTC_WKUP_IRQHandler</a> from startup_stm32f405xx.o(.text) referenced from startup_stm32f405xx.o(RESET)
@@ -986,13 +986,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[369]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clean_filename
 <LI><a href="#[745]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_wlanConnect
 <LI><a href="#[404]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_clean_filename
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[53c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_optlstring
 <LI><a href="#[648]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_gsub
 <LI><a href="#[45f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_addstring
 <LI><a href="#[49b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaS_new
 <LI><a href="#[676]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaO_pushvfstring
 <LI><a href="#[5ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaO_chunkid
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_open
 <LI><a href="#[624]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;l_str2d
 <LI><a href="#[5c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searchpath
@@ -1016,12 +1016,12 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strcmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ath_ioctl_handler
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[5a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkoption
 <LI><a href="#[456]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_argerror
 <LI><a href="#[49b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaS_new
 <LI><a href="#[674]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaG_ordererror
 <LI><a href="#[5ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getobjname
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[563]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiline
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcoll
 </UL>
@@ -1576,10 +1576,10 @@ Global Symbols
 <P><STRONG><a name="[1ba]"></a>Api_ConnectWiFi</STRONG> (Thumb, 332 bytes, Stack size 72 bytes, api_ioctl.o(i.Api_ConnectWiFi))
 <BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = Api_ConnectWiFi &rArr; wmi_scanparams_cmd &rArr; wmi_cmd_send &rArr; a_netbuf_free &rArr; a_netbuf_free_rx_pool &rArr; Driver_ReportRxBuffStatus &rArr; Custom_Driver_WakeDriver &rArr; rw_post_sem &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Install_static_wep_keys
-<LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wmi_scanparams_cmd
+<BR>[Calls]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wmi_scanparams_cmd
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wmi_connect_cmd
 <LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wmi_ap_profile_commit
+<LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Install_static_wep_keys
 <LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
@@ -1682,8 +1682,8 @@ Global Symbols
 <P><STRONG><a name="[1d7]"></a>Api_ParseInfoElem</STRONG> (Thumb, 354 bytes, Stack size 40 bytes, api_ioctl.o(i.Api_ParseInfoElem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = Api_ParseInfoElem &rArr; security_ie_parse &rArr; wpa_cipher_parse
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;security_ie_parse
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Util_Freq2ieee
+<BR>[Calls]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Util_Freq2ieee
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;security_ie_parse
 <LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
@@ -3926,22 +3926,22 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient_EventHandle1
 </UL>
 
-<P><STRONG><a name="[95]"></a>RAK_TcpClient_EventHandle1</STRONG> (Thumb, 248 bytes, Stack size 0 bytes, my_task.o(i.RAK_TcpClient_EventHandle1))
+<P><STRONG><a name="[95]"></a>RAK_TcpClient_EventHandle1</STRONG> (Thumb, 244 bytes, Stack size 0 bytes, tcp_udp_task.o(i.RAK_TcpClient_EventHandle1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 576<LI>Call Chain = RAK_TcpClient_EventHandle1 &rArr; send &rArr; t_send &rArr; t_sendto &rArr; custom_send_tcpip &rArr; Api_DataTxStart &rArr; Api_DriverAccessCheck &rArr; Custom_Driver_WaitForCondition &rArr; rw_pend_sem &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[389]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexRelease
 <LI><a href="#[369]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clean_filename
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_stamp
-<LI><a href="#[387]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
 <LI><a href="#[38c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
 <LI><a href="#[386]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_sysSleep
 <LI><a href="#[381]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;close
 <LI><a href="#[37f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient
 <LI><a href="#[38b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadQueue_n
 <LI><a href="#[38a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetQueue_length
+<LI><a href="#[387]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
 <LI><a href="#[388]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> my_task.o(i.creat_tcpcTask1)
+<BR>[Address Reference Count : 1]<UL><LI> tcp_udp_task.o(i.creat_tcpcTask1)
 </UL>
 <P><STRONG><a name="[38b]"></a>ReadQueue_n</STRONG> (Thumb, 114 bytes, Stack size 20 bytes, my_queue.o(i.ReadQueue_n))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = ReadQueue_n
@@ -4980,8 +4980,8 @@ Global Symbols
 <P><STRONG><a name="[533]"></a>__2fprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0fprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2fprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;panic
+<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;panic
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[5aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_write
 <LI><a href="#[36a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;l_message
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pthreadTask
@@ -5008,12 +5008,12 @@ Global Symbols
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;connect_callback
 <LI><a href="#[746]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_startSTA
 <LI><a href="#[744]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_init
-<LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
-<LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
-<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 <LI><a href="#[705]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_init
 <LI><a href="#[51f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;creat_tcpcTask1
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient_EventHandle1
+<LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
+<LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
+<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 <LI><a href="#[5d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mmc_open
 <LI><a href="#[62f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;linenoise
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaos_pmain
@@ -5601,14 +5601,14 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = _pthread_create &rArr; xTaskCreate &rArr; pvPortMalloc &rArr; vApplicationMallocFailedHook &rArr; osMutexWait &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[411]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCreate
-<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_lock
-<LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_init
-<LI><a href="#[414]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_destroy
 <LI><a href="#[40a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pthread_self
 <LI><a href="#[40b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_get
 <LI><a href="#[40e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_add
 <LI><a href="#[412]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_remove
 <LI><a href="#[40c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_init
+<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_lock
+<LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_init
+<LI><a href="#[414]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_destroy
 <LI><a href="#[413]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 <LI><a href="#[3ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 <LI><a href="#[3ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
@@ -5620,11 +5620,11 @@ Global Symbols
 <P><STRONG><a name="[415]"></a>_pthread_free</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, pthread.o(i._pthread_free))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = _pthread_free &rArr; _pthread_mutex_free &rArr; list_next &rArr; mtx_lock &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[414]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_destroy
-<LI><a href="#[40b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_get
+<BR>[Calls]<UL><LI><a href="#[40b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_get
 <LI><a href="#[417]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_destroy
 <LI><a href="#[416]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_pthread_mutex_free
 <LI><a href="#[412]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_remove
+<LI><a href="#[414]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_destroy
 <LI><a href="#[413]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pthreadTask
@@ -5634,8 +5634,8 @@ Global Symbols
 <P><STRONG><a name="[418]"></a>_pthread_init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, pthread.o(i._pthread_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = _pthread_init &rArr; list_init &rArr; mtx_init &rArr; xQueueGenericCreate &rArr; pvPortMalloc &rArr; vApplicationMallocFailedHook &rArr; osMutexWait &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_init
-<LI><a href="#[40c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_init
+<BR>[Calls]<UL><LI><a href="#[40c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_init
+<LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mach_init
 </UL>
@@ -6268,12 +6268,12 @@ Global Symbols
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;connect_callback
 <LI><a href="#[746]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_startSTA
 <LI><a href="#[744]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_init
-<LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
-<LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
-<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 <LI><a href="#[705]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_init
 <LI><a href="#[51f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;creat_tcpcTask1
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient_EventHandle1
+<LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
+<LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
+<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 <LI><a href="#[361]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lua_dofile_script
 </UL>
 
@@ -6313,7 +6313,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[37f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient
 </UL>
 
-<P><STRONG><a name="[51f]"></a>creat_tcpcTask1</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, my_task.o(i.creat_tcpcTask1))
+<P><STRONG><a name="[51f]"></a>creat_tcpcTask1</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, tcp_udp_task.o(i.creat_tcpcTask1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = creat_tcpcTask1 &rArr; xTaskCreate &rArr; pvPortMalloc &rArr; vApplicationMallocFailedHook &rArr; osMutexWait &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[411]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCreate
@@ -6811,12 +6811,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[37f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient
 <LI><a href="#[746]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_startSTA
 <LI><a href="#[744]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_init
-<LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
-<LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
-<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 <LI><a href="#[705]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_init
 <LI><a href="#[51f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;creat_tcpcTask1
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient_EventHandle1
+<LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
+<LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
+<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rw_lib_platform_os.o(i.wifi_init_params)
 </UL>
@@ -8217,14 +8217,14 @@ Global Symbols
 <LI><a href="#[440]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_settop
 <LI><a href="#[43f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_rotate
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
-<LI><a href="#[5c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searchpath
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utfchar
+<BR>[Called By]<UL><LI><a href="#[5c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searchpath
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[44d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addfield
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_format
 <LI><a href="#[455]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addliteral
 <LI><a href="#[443]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_value
 <LI><a href="#[439]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_s
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utfchar
 </UL>
 
 <P><STRONG><a name="[456]"></a>luaL_argerror</STRONG> (Thumb, 118 bytes, Stack size 120 bytes, lauxlib.o(i.luaL_argerror))
@@ -8237,8 +8237,7 @@ Global Symbols
 <LI><a href="#[43a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_tolstring
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
-<LI><a href="#[5f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getco
+<BR>[Called By]<UL><LI><a href="#[5f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getco
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_type
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_tonumber
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_setmetatable
@@ -8253,6 +8252,7 @@ Global Symbols
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_setlocal
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getlocal
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getinfo
+<LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_random
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_min
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_max
@@ -8261,10 +8261,6 @@ Global Symbols
 <LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_read
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_seek
 <LI><a href="#[491]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;aux_lines
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
-<LI><a href="#[732]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pushutfchar
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tremove
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tmove
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tinsert
@@ -8277,21 +8273,25 @@ Global Symbols
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_char
 <LI><a href="#[5fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getdetails
 <LI><a href="#[455]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addliteral
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
+<LI><a href="#[732]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pushutfchar
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 </UL>
 
 <P><STRONG><a name="[5cb]"></a>luaL_buffinit</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, lauxlib.o(i.luaL_buffinit))
 <BR><BR>[Called By]<UL><LI><a href="#[648]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_gsub
 <LI><a href="#[68c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_buffinitsize
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[5f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_line
 <LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_read
 <LI><a href="#[5c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searchpath
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utfchar
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tconcat
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_pack
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_gsub
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_format
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_dump
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utfchar
 </UL>
 
 <P><STRONG><a name="[68c]"></a>luaL_buffinitsize</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, lauxlib.o(i.luaL_buffinitsize))
@@ -8352,20 +8352,18 @@ Global Symbols
 <LI><a href="#[459]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_tointegerx
 <LI><a href="#[68f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_isnumber
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
-<LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_tonumber
+<BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_tonumber
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_select
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ipairsaux
 <LI><a href="#[4c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_optinteger
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_setlocal
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getlocal
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getinfo
+<LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
+<LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_ult
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_random
 <LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_read
-<LI><a href="#[732]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pushutfchar
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unpack
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tmove
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tinsert
@@ -8374,6 +8372,8 @@ Global Symbols
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_pack
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_format
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_char
+<LI><a href="#[732]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pushutfchar
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_write
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_toggle
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_read
@@ -8408,11 +8408,6 @@ Global Symbols
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_searchpath
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_loadlib
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_codes
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_aux
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_upper
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_unpack
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_sub
@@ -8427,6 +8422,11 @@ Global Symbols
 <LI><a href="#[759]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_find_aux
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_byte
 <LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gmatch
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_codes
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_aux
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 </UL>
 
 <P><STRONG><a name="[691]"></a>luaL_checknumber</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, lauxlib.o(i.luaL_checknumber))
@@ -8482,10 +8482,10 @@ Global Symbols
 <LI><a href="#[6a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_setfuncs
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_readline
 <LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_read
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_unpack
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_byte
 <LI><a href="#[445]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;push_captures
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
 <LI><a href="#[565]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;l_print
 </UL>
 
@@ -8495,9 +8495,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[690]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tag_error
 <LI><a href="#[44b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_type
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
-<LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_cocreate
+<BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_cocreate
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_xpcall
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_tonumber
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_setmetatable
@@ -8507,6 +8505,8 @@ Global Symbols
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_load
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_setuservalue
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_sethook
+<LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
+<LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sort
 <LI><a href="#[4e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checktab
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_dump
@@ -8548,12 +8548,12 @@ Global Symbols
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_package
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_math
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_io
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 <LI><a href="#[361]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lua_dofile_script
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_wifi
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_machine
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_tmr
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_thread
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 </UL>
 
 <P><STRONG><a name="[43c]"></a>luaL_error</STRONG> (Thumb, 44 bytes, Stack size 32 bytes, lauxlib.o(i.luaL_error))
@@ -8564,8 +8564,7 @@ Global Symbols
 <LI><a href="#[64a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_error
 <LI><a href="#[5bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_concat
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
-<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_setmetatable
+<BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_setmetatable
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_print
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;generic_reader
 <LI><a href="#[43e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_tolstring
@@ -8575,18 +8574,16 @@ Global Symbols
 <LI><a href="#[503]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkstack
 <LI><a href="#[456]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_argerror
 <LI><a href="#[4c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resizebox
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
-<LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
-<LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkload
+<LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_random
 <LI><a href="#[585]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tofile
 <LI><a href="#[5f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;opencheck
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_readline
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_popen
 <LI><a href="#[600]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getiofile
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_aux
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
+<LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
+<LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkload
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unpack
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tinsert
 <LI><a href="#[4aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;partition
@@ -8605,6 +8602,9 @@ Global Symbols
 <LI><a href="#[4e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;classend
 <LI><a href="#[443]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_value
 <LI><a href="#[439]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_s
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_aux
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_write
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_toggle
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_mode
@@ -8724,8 +8724,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_load
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_load
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_load
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[563]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;multiline
 <LI><a href="#[460]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addreturn
 </UL>
@@ -8808,9 +8808,6 @@ Global Symbols
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_sethook
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_setvbuf
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_seek
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unpack
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tremove
 <LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tconcat
@@ -8819,6 +8816,9 @@ Global Symbols
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_gsub
 <LI><a href="#[759]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_find_aux
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_byte
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;thread_suspend
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;thread_stop
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;thread_resume
@@ -8888,16 +8888,16 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_pushresultsize
 <LI><a href="#[648]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_gsub
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[5f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_line
 <LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_read
 <LI><a href="#[5c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searchpath
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utfchar
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tconcat
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_pack
 <LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_gsub
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_format
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_dump
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utfchar
 </UL>
 
 <P><STRONG><a name="[69c]"></a>luaL_pushresultsize</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, lauxlib.o(i.luaL_pushresultsize))
@@ -8963,11 +8963,11 @@ Global Symbols
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_package
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_math
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_io
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_wifi
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_machine
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_tmr
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_thread
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 </UL>
 
 <P><STRONG><a name="[6a1]"></a>luaL_setmetatable</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, lauxlib.o(i.luaL_setmetatable))
@@ -9906,8 +9906,8 @@ Global Symbols
 <LI><a href="#[69a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_requiref
 <LI><a href="#[68d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_callmeta
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hookf
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[4a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sort_comp
 <LI><a href="#[443]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_value
 </UL>
@@ -9917,9 +9917,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[664]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaD_rawrunprotected
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
-<LI><a href="#[49e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxresume
+<BR>[Called By]<UL><LI><a href="#[49e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxresume
 <LI><a href="#[503]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkstack
+<LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unpack
 </UL>
 
@@ -9992,12 +9992,12 @@ Global Symbols
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_math
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_io
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pack
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_wifi
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_machine
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_tmr
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_thread
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;thread_list
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 </UL>
 
 <P><STRONG><a name="[6c4]"></a>lua_dump</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, lapi.o(i.lua_dump))
@@ -10045,8 +10045,6 @@ Global Symbols
 <LI><a href="#[698]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_newmetatable
 <LI><a href="#[694]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_getsubtable
 <LI><a href="#[68b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pushglobalfuncname
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
-<LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_lines
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_close
 <LI><a href="#[600]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getiofile
@@ -10055,6 +10053,8 @@ Global Symbols
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searcher_preload
 <LI><a href="#[63f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lookforfunc
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
+<LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
 </UL>
 
 <P><STRONG><a name="[623]"></a>lua_getglobal</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, lapi.o(i.lua_getglobal))
@@ -10177,11 +10177,11 @@ Global Symbols
 <LI><a href="#[5aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_write
 <LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_read
 <LI><a href="#[491]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;aux_lines
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utfchar
 <LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tinsert
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pack
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_format
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_char
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utfchar
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_read
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_mode
 <LI><a href="#[565]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;l_print
@@ -10331,9 +10331,9 @@ Global Symbols
 <LI><a href="#[299]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaD_pcall
 <LI><a href="#[65e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaD_call
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_xpcall
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_xpcall
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_pcall
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[6ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaos_main
 <LI><a href="#[565]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;l_print
 <LI><a href="#[561]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;docall
@@ -10356,6 +10356,7 @@ Global Symbols
 <LI><a href="#[491]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;aux_lines
 <LI><a href="#[63f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lookforfunc
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaos_pmain
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwifi_init
 <LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_history
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_clear_history
@@ -10375,8 +10376,8 @@ Global Symbols
 <LI><a href="#[43b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_prepbuffsize
 <LI><a href="#[491]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;aux_lines
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_package
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_codes
 <LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gmatch
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_codes
 <LI><a href="#[6ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaos_main
 <LI><a href="#[561]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;docall
 </UL>
@@ -10432,11 +10433,6 @@ Global Symbols
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_seek
 <LI><a href="#[491]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;aux_lines
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_math
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_codes
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_aux
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pack
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_unpack
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_packsize
@@ -10445,12 +10441,17 @@ Global Symbols
 <LI><a href="#[759]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_find_aux
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_byte
 <LI><a href="#[43d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;push_onecapture
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_codes
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_aux
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;codepoint
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lgpio_read
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_version
 <LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;os_get_mainstack
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;thread_list
 <LI><a href="#[6f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_thread
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 </UL>
 
 <P><STRONG><a name="[54f]"></a>lua_pushlightuserdata</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, lapi.o(i.lua_pushlightuserdata))
@@ -10500,11 +10501,11 @@ Global Symbols
 <LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_read
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_searchpath
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_loadlib
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tremove
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_pack
 <LI><a href="#[759]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_find_aux
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;utflen
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;byteoffset
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;thread_status
 </UL>
 
@@ -10536,8 +10537,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[49b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaS_new
 <LI><a href="#[4ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaC_step
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_costatus
+<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_costatus
 <LI><a href="#[49e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxresume
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_base
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_type
@@ -10559,8 +10559,7 @@ Global Symbols
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_sethook
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getlocal
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_gethook
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
-<LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkload
+<LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_type
 <LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_type
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_noclose
@@ -10573,6 +10572,8 @@ Global Symbols
 <LI><a href="#[63f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lookforfunc
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_loadlib
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
+<LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkload
 <LI><a href="#[4d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkfield
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_sub
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;str_rep
@@ -10625,11 +10626,11 @@ Global Symbols
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_package
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_io
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
-<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_codes
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tmove
 <LI><a href="#[4a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sort_comp
 <LI><a href="#[4a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxsort
 <LI><a href="#[443]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_value
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_codes
 </UL>
 
 <P><STRONG><a name="[693]"></a>lua_pushvfstring</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, lapi.o(i.lua_pushvfstring))
@@ -10674,9 +10675,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_base
 <LI><a href="#[6a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_unref
 <LI><a href="#[69d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_ref
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_package
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gctm
 <LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_package
 <LI><a href="#[6f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;new_thread
 </UL>
 
@@ -10755,8 +10756,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[606]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;index2addr
 <LI><a href="#[6cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reverse
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_coresume
+<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_coresume
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_auxwrap
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_xpcall
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_pcall
@@ -10775,6 +10775,7 @@ Global Symbols
 <LI><a href="#[543]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;treatstackoption
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getlocal
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_gethook
+<LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
 <LI><a href="#[491]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;aux_lines
 <LI><a href="#[6cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setpath
 <LI><a href="#[5c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searchpath
@@ -10818,8 +10819,8 @@ Global Symbols
 <LI><a href="#[6cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setpath
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pack
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;thread_list
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaopen_pio
 </UL>
 
 <P><STRONG><a name="[69f]"></a>lua_setglobal</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, lapi.o(i.lua_setglobal))
@@ -10893,8 +10894,7 @@ Global Symbols
 <P><STRONG><a name="[440]"></a>lua_settop</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, lapi.o(i.lua_settop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = lua_settop
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
-<LI><a href="#[49e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxresume
+<BR>[Called By]<UL><LI><a href="#[49e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxresume
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_tonumber
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_setmetatable
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_rawset
@@ -10928,8 +10928,7 @@ Global Symbols
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_setlocal
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_sethook
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_gethook
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gctm
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_modf
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_floor
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_ceil
@@ -10944,6 +10943,8 @@ Global Symbols
 <LI><a href="#[5c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searchpath
 <LI><a href="#[63f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lookforfunc
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gctm
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[4a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sort_comp
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sort
 <LI><a href="#[4aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;partition
@@ -10973,8 +10974,8 @@ Global Symbols
 <LI><a href="#[65d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaC_upvalbarrier_
 <LI><a href="#[453]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaC_barrier_
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
-<LI><a href="#[646]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;load_aux
+<BR>[Called By]<UL><LI><a href="#[646]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;load_aux
+<LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
 </UL>
 
 <P><STRONG><a name="[54c]"></a>lua_setuservalue</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, lapi.o(i.lua_setuservalue))
@@ -10986,11 +10987,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_setuservalue
 </UL>
 
-<P><STRONG><a name="[aa]"></a>lua_start</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, lua_test_thread.o(i.lua_start))
+<P><STRONG><a name="[aa]"></a>lua_start</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, lua_test_thread.o(i.lua_start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1688 + In Cycle
 <LI>Call Chain = lua_start &rArr;  lua_start (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaos_main
+<BR>[Calls]<UL><LI><a href="#[360]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[6ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaos_main
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_start
 </UL>
 <BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_start
@@ -11048,8 +11050,8 @@ Global Symbols
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_abs
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_readline
 <LI><a href="#[5aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_write
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_aux
 <LI><a href="#[455]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addliteral
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iter_aux
 </UL>
 
 <P><STRONG><a name="[43a]"></a>lua_tolstring</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, lapi.o(i.lua_tolstring))
@@ -11059,8 +11061,7 @@ Global Symbols
 <LI><a href="#[6a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaO_tostring
 <LI><a href="#[4ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaC_step
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_tonumber
+<BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_tonumber
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_select
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_print
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaB_load
@@ -11077,13 +11078,14 @@ Global Symbols
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;panic
 <LI><a href="#[574]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;errfile
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_traceback
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
-<LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
-<LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkload
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_debug
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_readline
 <LI><a href="#[5f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_iofile
 <LI><a href="#[5c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searchpath
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;searcher_Croot
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
+<LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
+<LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkload
 <LI><a href="#[455]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addliteral
 <LI><a href="#[439]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_s
 <LI><a href="#[367]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;report
@@ -11132,10 +11134,10 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_testudata
 <LI><a href="#[4c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resizebox
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gctm
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_readline
 <LI><a href="#[600]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getiofile
 <LI><a href="#[63f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lookforfunc
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gctm
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gmatch_aux
 </UL>
 
@@ -11170,7 +11172,6 @@ Global Symbols
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getuservalue
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getlocal
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;db_getinfo
-<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_type
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;math_log
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;io_lines
@@ -11179,6 +11180,7 @@ Global Symbols
 <LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_read
 <LI><a href="#[5f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;g_iofile
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_require
+<LI><a href="#[5ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findloader
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;unpack
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tmove
 <LI><a href="#[4a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sort_comp
@@ -11749,12 +11751,12 @@ Global Symbols
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;connect_callback
 <LI><a href="#[746]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_startSTA
 <LI><a href="#[744]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_init
-<LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
-<LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
-<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 <LI><a href="#[705]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_init
 <LI><a href="#[51f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;creat_tcpcTask1
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient_EventHandle1
+<LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
+<LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
+<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 </UL>
 
 <P><STRONG><a name="[6fb]"></a>osMutexWait</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, cmsis_os.o(i.osMutexWait))
@@ -11765,8 +11767,8 @@ Global Symbols
 <LI><a href="#[6ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
 </UL>
 <BR>[Called By]<UL><LI><a href="#[50f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
-<LI><a href="#[387]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
 <LI><a href="#[702]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
+<LI><a href="#[387]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
 <LI><a href="#[769]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationStackOverflowHook
 <LI><a href="#[735]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vApplicationMallocFailedHook
 </UL>
@@ -11837,17 +11839,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_app_main
 </UL>
 
-<P><STRONG><a name="[705]"></a>platform_init</STRONG> (Thumb, 256 bytes, Stack size 136 bytes, my_task.o(i.platform_init))
+<P><STRONG><a name="[705]"></a>platform_init</STRONG> (Thumb, 258 bytes, Stack size 136 bytes, tcp_udp_task.o(i.platform_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 808<LI>Call Chain = platform_init &rArr; rw_sysDriverInit &rArr; _set_PowerParam &rArr; ath_ioctl_handler &rArr; Api_ConnectWiFi &rArr; wmi_scanparams_cmd &rArr; wmi_cmd_send &rArr; a_netbuf_free &rArr; a_netbuf_free_rx_pool &rArr; Driver_ReportRxBuffStatus &rArr; Custom_Driver_WakeDriver &rArr; rw_post_sem &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[389]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexRelease
 <LI><a href="#[369]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clean_filename
 <LI><a href="#[706]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wifi_init_params
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_stamp
-<LI><a href="#[387]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
 <LI><a href="#[707]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_sysDriverInit
 <LI><a href="#[709]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_getMacAddr
 <LI><a href="#[708]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_getLibVersion
+<LI><a href="#[387]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
 <LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[388]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
@@ -11865,11 +11867,11 @@ Global Symbols
 <LI><a href="#[35f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelete
 <LI><a href="#[43a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_tolstring
 <LI><a href="#[440]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_settop
-<LI><a href="#[63e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_unlock
 <LI><a href="#[40b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_get
 <LI><a href="#[415]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_pthread_free
 <LI><a href="#[41b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_next
 <LI><a href="#[419]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;list_first
+<LI><a href="#[63e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_unlock
 <LI><a href="#[3ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
 <LI><a href="#[533]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2fprintf
 </UL>
@@ -12176,8 +12178,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = rw_sysSleep
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send
-<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient_EventHandle1
+<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 </UL>
 
 <P><STRONG><a name="[244]"></a>rw_unlock_mutex</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, rw_os.o(i.rw_unlock_mutex))
@@ -12404,13 +12406,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[380]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;socket
 </UL>
 
-<P><STRONG><a name="[3a4]"></a>test_netWorkTask</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, my_task.o(i.test_netWorkTask))
+<P><STRONG><a name="[3a4]"></a>test_netWorkTask</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, tcp_udp_task.o(i.test_netWorkTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 816<LI>Call Chain = test_netWorkTask &rArr; rw_network_startSTA &rArr; rw_network_init &rArr; rw_wlanConnect &rArr; _set_str_pmk &rArr; ath_ioctl_handler &rArr; Api_ConnectWiFi &rArr; wmi_scanparams_cmd &rArr; wmi_cmd_send &rArr; a_netbuf_free &rArr; a_netbuf_free_rx_pool &rArr; Driver_ReportRxBuffStatus &rArr; Custom_Driver_WakeDriver &rArr; rw_post_sem &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[389]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexRelease
 <LI><a href="#[369]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clean_filename
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_stamp
-<LI><a href="#[387]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
 <LI><a href="#[386]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_sysSleep
 <LI><a href="#[746]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_startSTA
 <LI><a href="#[744]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_network_init
@@ -12418,6 +12419,7 @@ Global Symbols
 <LI><a href="#[747]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_sysDriverReset
 <LI><a href="#[705]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_init
 <LI><a href="#[51f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;creat_tcpcTask1
+<LI><a href="#[387]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;p_lock_mutex
 <LI><a href="#[388]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartAppTask
@@ -12769,6 +12771,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LuaTask
 <LI><a href="#[3a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_start
 <LI><a href="#[762]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usleep
 <LI><a href="#[755]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sleep
 <LI><a href="#[6e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;msleep
@@ -13499,11 +13502,11 @@ Global Symbols
 <LI><a href="#[30c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessagePut
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_unlock_mutex
 <LI><a href="#[241]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rw_post_sem
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pthreadTask
+<LI><a href="#[416]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_pthread_mutex_free
 <LI><a href="#[63e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_unlock
 <LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_init
 <LI><a href="#[414]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mtx_destroy
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pthreadTask
-<LI><a href="#[416]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_pthread_mutex_free
 </UL>
 
 <P><STRONG><a name="[6f9]"></a>xQueueGenericSendFromISR</STRONG> (Thumb, 188 bytes, Stack size 32 bytes, queue.o(i.xQueueGenericSendFromISR))
@@ -14479,15 +14482,15 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usbd_cdc.o(.data)
 </UL>
-<P><STRONG><a name="[387]"></a>p_lock_mutex</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, my_task.o(i.p_lock_mutex))
+<P><STRONG><a name="[387]"></a>p_lock_mutex</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, tcp_udp_task.o(i.p_lock_mutex))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = p_lock_mutex &rArr; osMutexWait &rArr; xQueueGenericReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexWait
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
-<LI><a href="#[705]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_init
+<BR>[Called By]<UL><LI><a href="#[705]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;platform_init
 <LI><a href="#[51f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;creat_tcpcTask1
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RAK_TcpClient_EventHandle1
+<LI><a href="#[3a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;test_netWorkTask
 </UL>
 
 <P><STRONG><a name="[4cf]"></a>check_fs</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, ff.o(i.check_fs))
@@ -15874,8 +15877,7 @@ Local Symbols
 <P><STRONG><a name="[f2]"></a>db_gethook</STRONG> (Thumb, 182 bytes, Stack size 32 bytes, ldblib.o(i.db_gethook))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1560<LI>Call Chain = db_gethook &rArr; checkstack &rArr; luaL_error &rArr; luaL_where &rArr; lua_pushfstring &rArr; luaO_pushvfstring &rArr;  luaG_runerror (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
-<LI><a href="#[4a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_xmove
+<BR>[Calls]<UL><LI><a href="#[4a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_xmove
 <LI><a href="#[440]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_settop
 <LI><a href="#[43f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_rotate
 <LI><a href="#[539]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_rawgetp
@@ -15888,14 +15890,14 @@ Local Symbols
 <LI><a href="#[53b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_gethookcount
 <LI><a href="#[538]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_gethook
 <LI><a href="#[536]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getthread
+<LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ldblib.o(.constdata)
 </UL>
 <P><STRONG><a name="[f3]"></a>db_getinfo</STRONG> (Thumb, 388 bytes, Stack size 120 bytes, ldblib.o(i.db_getinfo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1832<LI>Call Chain = db_getinfo &rArr; luaL_optlstring &rArr; luaL_checklstring &rArr; tag_error &rArr; typeerror &rArr; luaL_argerror &rArr; luaL_error &rArr; luaL_where &rArr; lua_pushfstring &rArr; luaO_pushvfstring &rArr;  luaG_runerror (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
-<LI><a href="#[53d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_getstack
+<BR>[Calls]<UL><LI><a href="#[53d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_getstack
 <LI><a href="#[53e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_getinfo
 <LI><a href="#[53c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_optlstring
 <LI><a href="#[4ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkinteger
@@ -15911,6 +15913,7 @@ Local Symbols
 <LI><a href="#[541]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;settabsi
 <LI><a href="#[542]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;settabsb
 <LI><a href="#[536]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getthread
+<LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
 <LI><a href="#[4dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strchr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ldblib.o(.constdata)
@@ -15918,8 +15921,7 @@ Local Symbols
 <P><STRONG><a name="[f4]"></a>db_getlocal</STRONG> (Thumb, 170 bytes, Stack size 120 bytes, ldblib.o(i.db_getlocal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1816<LI>Call Chain = db_getlocal &rArr; luaL_checkinteger &rArr; tag_error &rArr; typeerror &rArr; luaL_argerror &rArr; luaL_error &rArr; luaL_where &rArr; lua_pushfstring &rArr; luaO_pushvfstring &rArr;  luaG_runerror (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
-<LI><a href="#[53d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_getstack
+<BR>[Calls]<UL><LI><a href="#[53d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_getstack
 <LI><a href="#[4ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkinteger
 <LI><a href="#[456]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_argerror
 <LI><a href="#[4a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_xmove
@@ -15930,6 +15932,7 @@ Local Symbols
 <LI><a href="#[4c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_pushnil
 <LI><a href="#[544]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_getlocal
 <LI><a href="#[536]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getthread
+<LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ldblib.o(.constdata)
 </UL>
@@ -15968,8 +15971,7 @@ Local Symbols
 <P><STRONG><a name="[fb]"></a>db_sethook</STRONG> (Thumb, 286 bytes, Stack size 40 bytes, ldblib.o(i.db_sethook))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1760<LI>Call Chain = db_sethook &rArr; luaL_optinteger &rArr; luaL_checkinteger &rArr; tag_error &rArr; typeerror &rArr; luaL_argerror &rArr; luaL_error &rArr; luaL_where &rArr; lua_pushfstring &rArr; luaO_pushvfstring &rArr;  luaG_runerror (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
-<LI><a href="#[4c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_optinteger
+<BR>[Calls]<UL><LI><a href="#[4c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_optinteger
 <LI><a href="#[4ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checktype
 <LI><a href="#[4c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checklstring
 <LI><a href="#[4a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_xmove
@@ -15986,6 +15988,7 @@ Local Symbols
 <LI><a href="#[53f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_createtable
 <LI><a href="#[54a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_sethook
 <LI><a href="#[536]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getthread
+<LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
 <LI><a href="#[4dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strchr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ldblib.o(.constdata)
@@ -15993,8 +15996,7 @@ Local Symbols
 <P><STRONG><a name="[fc]"></a>db_setlocal</STRONG> (Thumb, 144 bytes, Stack size 128 bytes, ldblib.o(i.db_setlocal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1824<LI>Call Chain = db_setlocal &rArr; luaL_checkinteger &rArr; tag_error &rArr; typeerror &rArr; luaL_argerror &rArr; luaL_error &rArr; luaL_where &rArr; lua_pushfstring &rArr; luaO_pushvfstring &rArr;  luaG_runerror (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
-<LI><a href="#[53d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_getstack
+<BR>[Calls]<UL><LI><a href="#[53d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_getstack
 <LI><a href="#[4ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkinteger
 <LI><a href="#[545]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkany
 <LI><a href="#[456]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_argerror
@@ -16003,6 +16005,7 @@ Local Symbols
 <LI><a href="#[4a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_pushstring
 <LI><a href="#[54b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_setlocal
 <LI><a href="#[536]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getthread
+<LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkstack
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ldblib.o(.constdata)
 </UL>
@@ -16019,8 +16022,8 @@ Local Symbols
 <P><STRONG><a name="[fe]"></a>db_setupvalue</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, ldblib.o(i.db_setupvalue))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1720<LI>Call Chain = db_setupvalue &rArr; auxupvalue &rArr; luaL_checkinteger &rArr; tag_error &rArr; typeerror &rArr; luaL_argerror &rArr; luaL_error &rArr; luaL_where &rArr; lua_pushfstring &rArr; luaO_pushvfstring &rArr;  luaG_runerror (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
-<LI><a href="#[545]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkany
+<BR>[Calls]<UL><LI><a href="#[545]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checkany
+<LI><a href="#[4ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;auxupvalue
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ldblib.o(.constdata)
 </UL>
@@ -16049,19 +16052,19 @@ Local Symbols
 <P><STRONG><a name="[f9]"></a>db_upvalueid</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, ldblib.o(i.db_upvalueid))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1728<LI>Call Chain = db_upvalueid &rArr; checkupval &rArr; luaL_checkinteger &rArr; tag_error &rArr; typeerror &rArr; luaL_argerror &rArr; luaL_error &rArr; luaL_where &rArr; lua_pushfstring &rArr; luaO_pushvfstring &rArr;  luaG_runerror (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
-<LI><a href="#[54e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_upvalueid
+<BR>[Calls]<UL><LI><a href="#[54e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_upvalueid
 <LI><a href="#[54f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_pushlightuserdata
+<LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ldblib.o(.constdata)
 </UL>
 <P><STRONG><a name="[f8]"></a>db_upvaluejoin</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, ldblib.o(i.db_upvaluejoin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1744<LI>Call Chain = db_upvaluejoin &rArr; checkupval &rArr; luaL_checkinteger &rArr; tag_error &rArr; typeerror &rArr; luaL_argerror &rArr; luaL_error &rArr; luaL_where &rArr; lua_pushfstring &rArr; luaO_pushvfstring &rArr;  luaG_runerror (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
-<LI><a href="#[456]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_argerror
+<BR>[Calls]<UL><LI><a href="#[456]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_argerror
 <LI><a href="#[551]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_upvaluejoin
 <LI><a href="#[550]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_iscfunction
+<LI><a href="#[4e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkupval
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ldblib.o(.constdata)
 </UL>
@@ -17751,9 +17754,9 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 10040<LI>Call Chain = searcher_C &rArr; findfile &rArr; searchpath &rArr; luaL_gsub &rArr; luaL_addstring &rArr; luaL_addlstring &rArr; luaL_prepbuffsize &rArr; resizebox &rArr;  resizebox (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_checklstring
+<LI><a href="#[647]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loadfunc
 <LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
 <LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkload
-<LI><a href="#[647]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loadfunc
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> loadlib.o(.constdata)
 </UL>
@@ -17765,9 +17768,9 @@ Local Symbols
 <LI><a href="#[4a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_pushstring
 <LI><a href="#[44a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_pushlstring
 <LI><a href="#[461]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_pushfstring
+<LI><a href="#[647]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loadfunc
 <LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
 <LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkload
-<LI><a href="#[647]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loadfunc
 <LI><a href="#[4dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strchr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> loadlib.o(.constdata)
@@ -17808,8 +17811,8 @@ Local Symbols
 <LI><a href="#[233]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[4dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strchr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_searchpath
+<BR>[Called By]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ll_searchpath
+<LI><a href="#[5c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findfile
 </UL>
 
 <P><STRONG><a name="[6cf]"></a>setpath</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, loadlib.o(i.setpath))
@@ -20117,10 +20120,11 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaos_pmain
 </UL>
 
-<P><STRONG><a name="[b1]"></a>luaos_pmain</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, lua.o(i.luaos_pmain))
-<BR><BR>[Stack]<UL><LI>Max Depth = 2320<LI>Call Chain = luaos_pmain &rArr; luaos_boot_scripts &rArr; dofile &rArr; luaL_loadfilex &rArr; lua_load &rArr; luaD_protectedparser &rArr; luaM_realloc_ &rArr; luaC_fullgc &rArr; luaC_runtilstate &rArr; singlestep &rArr; runafewfinalizers &rArr; GCTM &rArr; luaD_pcall &rArr; luaD_shrinkstack &rArr; luaD_reallocstack &rArr;  luaM_realloc_ (Cycle)
+<P><STRONG><a name="[b1]"></a>luaos_pmain</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, lua.o(i.luaos_pmain))
+<BR><BR>[Stack]<UL><LI>Max Depth = 2328<LI>Call Chain = luaos_pmain &rArr; luaos_boot_scripts &rArr; dofile &rArr; luaL_loadfilex &rArr; lua_load &rArr; luaD_protectedparser &rArr; luaM_realloc_ &rArr; luaC_fullgc &rArr; luaC_runtilstate &rArr; singlestep &rArr; runafewfinalizers &rArr; GCTM &rArr; luaD_pcall &rArr; luaD_shrinkstack &rArr; luaD_reallocstack &rArr;  luaM_realloc_ (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[364]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_openlibs
+<BR>[Calls]<UL><LI><a href="#[494]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lua_pushboolean
+<LI><a href="#[364]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_openlibs
 <LI><a href="#[365]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaL_openHardwarelibs
 <LI><a href="#[6d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;luaos_boot_scripts
 <LI><a href="#[560]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;doREPL

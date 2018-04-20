@@ -822,6 +822,11 @@
               <FileType>1</FileType>
               <FilePath>..\OS_task\my_task\task_utilities.c</FilePath>
             </File>
+            <File>
+              <FileName>tcp_udp_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\OS_task\my_task\tcp_udp_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

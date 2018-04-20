@@ -95,6 +95,7 @@ static int os_set_mainstack(lua_State *L) {
 }
 
 static int os_get_allTask(lua_State *L) {
+	#if ( configUSE_TRACE_FACILITY == 1 ) //开启FreeRTOS的debug
 	TaskStatus_t *statusArray;
 	UBaseType_t task_num;
 		
@@ -129,6 +130,9 @@ static int os_get_allTask(lua_State *L) {
      return luaL_error(L, "not enough memory!");
 	}
    vPortFree(statusArray); //释放内存
+	#else
+	printf("configUSE_TRACE_FACILITY=0,debug off!\r\n");
+	#endif
    return 0;
 }
 #endif

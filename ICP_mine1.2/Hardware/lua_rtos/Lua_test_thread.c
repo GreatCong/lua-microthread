@@ -85,7 +85,7 @@ void *lua_start(void *arg) {
 	for (;;) {
 		luaos_main();
 		//printf("ok ");
-		//vTaskDelay(100);
+		vTaskDelay(100);
 	}
 
 	return NULL;

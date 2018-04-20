@@ -23,6 +23,7 @@
 ************************************/
 void get_xtask_state(void)
 {
+	#if ( configUSE_TRACE_FACILITY == 1 )
     char tmp[128] = "";
     int res_getstate = 0;
     const char task_state[]={'r','R','B','S','D'};  
@@ -76,6 +77,7 @@ void get_xtask_state(void)
 
     /*ÊÍ·ÅÄÚ´æ*/
     vPortFree(pxTaskStatusArray);
+		#endif
 }
 
 /*FreeeRTOS ²Ã¼ô*/

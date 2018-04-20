@@ -33,6 +33,7 @@
 
 void enter_critical_section() {
 	if (portIN_ISR()) {
+//		taskENTER_CRITICAL_FROM_ISR();//add by lcj
 		taskDISABLE_INTERRUPTS();
 	}
 	else {
@@ -43,6 +44,7 @@ void enter_critical_section() {
 void exit_critical_section() {
 	if (portIN_ISR()) {
 		taskENABLE_INTERRUPTS();
+//		taskENTER_CRITICAL_FROM_ISR();//add by lcj
 	}
 	else {
 		taskEXIT_CRITICAL();
@@ -64,6 +66,7 @@ void exit_critical_section() {
 //}
 
 UBaseType_t uxGetTaskId() {
+	#if ( configUSE_TRACE_FACILITY == 1 ) //仅仅是测试用的
 	UBaseType_t uxTaskNumber;
 
 	enter_critical_section();
@@ -71,6 +74,9 @@ UBaseType_t uxGetTaskId() {
 	exit_critical_section();
 
 	return uxTaskNumber;
+	#else
+	return 0;
+	#endif
 }
 
 UBaseType_t uxGetThreadId() {

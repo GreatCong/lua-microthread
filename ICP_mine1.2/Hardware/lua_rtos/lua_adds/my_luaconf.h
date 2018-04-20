@@ -1,19 +1,39 @@
+/**
+ *************************************************************************************
+ * @file my_luaconf.h
+ * @author lcj
+ * @version 1.1
+ * @date
+ * @brief 在FreeRTOS中移植，更改地方
+          task.h ---> #include
+          task.c ---> 363行加入部分定义 以及 最后一行的#include
+          port.c ---> 112行
+
+          FreeRTOS.h ---> 设置configUSE_TRACE_FACILITY==1
+          portmacro.h --> #include
+
+          lua.h   ----> #include
+          linit.c ----> 注册Lua
+	--> 2018.4.10
+					 注册lua函数不需要在linit中注册,增加的注册函数在lhardware.c中
+					 note:
+					     1.auxmods.h中设置模块的名称
+							 2.my_luaconf.h中设置注册模块的表
+							 3.myBoardDef.h中打开相应的宏，完成注册配置
+  --> 2018.4.13
+	         lua_adds.h --> 去除了doREPL的死循环,支持ctrl-D后reboot lua
+					 bug：
+					    1.线程执行前,FreeRTOS的Tasknum会莫名其妙地加1
+							2.线程执行结束后,会执行删除线程函数,但是莫名其妙地多执行n(运行结束的Lua thread数)次
+							  从而使得下一次创建线程的tag标号会加n
+					 note:
+					    在进行读文件的操作(如dofile)时,最好执行下ctrl-D,让lua main_thread进行一次循环
+							释放其中的局部标量
+ *************************************************************************************
+*/
 // Rename main in lua.c with lua_main
 // Remove get_prompt in lua.c
 // Rename pushline to luaos_pushline in lua.c
-
-/****** add by lcj 
-//在FreeRTOS中移植，更改地方
-task.h #include
-task.c 363行加入部分定义 以及 最后一行的#include
-port.c 112行
-
-FreeRTOS.h中设置 configUSE_TRACE_FACILITY==1
-portmacro.h #include
-
-lua.h #include
-linit 注册Lua
-*/
 
 #ifndef WLUA_CONF
 #define WLUA_CONF

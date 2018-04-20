@@ -441,7 +441,11 @@ void pthreadTask(void *taskArgs) {
     free(taskArgs);
         
     // End related task
-    vTaskDelete(NULL);
+    vTaskDelete(NULL);//这里是Lua main thread的Task回调,Task最好不要有返回值,这里没有返回值，所有在运行结束后删除自身
+		
+//		for(;;){ //add by lcj
+//		  vTaskDelay(1);
+//		}
 }
 
 //add by lcj

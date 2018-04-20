@@ -237,8 +237,12 @@ static int luaos_pmain (lua_State *L) {
   
   status_set(STATUS_LUA_INTERPRETER);
 
-  for(;;)//如果注释掉doREPL 会出现问题，doREPL相当于是在执行主线程
+//  for(;;){  //如果注释掉doREPL 会出现问题，doREPL相当于是在执行主线程
       doREPL(L);  /* do read-eval-print loop */
+		printf("ctrl-D,new line!\r\n");
+	status_set(STATUS_LUA_ABORT_BOOT_SCRIPTS);//防止ctrl-D后又在运行autorun.lua
+//		vTaskDelay(1);
+//	}
 
   lua_pushboolean(L, 1);  /* signal no errors */
   return 1;    
@@ -250,7 +254,7 @@ static int luaos_pmain (lua_State *L) {
 //
 // * Create a global reference to Lua state for further access outside Lua
 // * Call to LuaOS version of pmain
-int luaos_main (void) {
+int luaos_main (void) {//在Task内部进行循环，会导致局部变量无法释放，一直停留在栈控件上
   int status, result;
 
   LuaLockInit(NULL);

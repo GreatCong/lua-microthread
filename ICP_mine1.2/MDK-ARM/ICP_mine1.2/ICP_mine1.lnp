@@ -66,6 +66,7 @@
 "icp_mine1.2\bluetooth.o"
 "icp_mine1.2\my_task.o"
 "icp_mine1.2\task_utilities.o"
+"icp_mine1.2\tcp_udp_task.o"
 "icp_mine1.2\my_queue.o"
 "icp_mine1.2\diskio.o"
 "icp_mine1.2\syscall.o"

@@ -182,7 +182,7 @@ static int io_getchars(int _FileHandle,void*  _DstBuf,unsigned int _MaxCharCount
 
 #if LUA_USE_RUNRTOS 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){//串口接收中断回调
-  if (huart->Instance == USART6)  {
+  if (huart->Instance == LUA_INPUT_UART)  {
 		BaseType_t Result,xHigherPriorityTaskWoken;
 		Result=xEventGroupSetBitsFromISR(Lua_groupGets_handle,Lua_iogets_Bit,&xHigherPriorityTaskWoken);//需要设置OS为use_timers
 			if(Result!=pdFAIL)
