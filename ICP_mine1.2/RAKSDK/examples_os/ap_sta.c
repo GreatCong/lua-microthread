@@ -65,7 +65,13 @@ int rw_network_init(rw_WlanConnect_t* pconn, rw_IpConfigMode_t ipmode, rw_IpConf
         delay_ms(5);
 	}
     app_demo_ctx.rw_ipquery_status = STATUS_OK;
-	DPRINTF("addr = 0X%X\r\n", ipconfig->addr);
+//	DPRINTF("addr = 0X%X\r\n", ipconfig->addr);
+	uint8_t my_addr[4] = {0};//对地址进行十进制转化
+	my_addr[0] = (uint8_t)(ipconfig->addr >> 24);
+	my_addr[1] = (uint8_t)(ipconfig->addr >> 16);
+	my_addr[2] = (uint8_t)(ipconfig->addr >> 8);
+	my_addr[3] = (uint8_t)(ipconfig->addr >> 0) ;
+	DPRINTF("ipquery success addr = 0x%x(%d.%d.%d.%d)\r\n", ipconfig->addr,my_addr[0],my_addr[1],my_addr[2],my_addr[3]);//可以显示十进制的地址
 
 	if(pconn->role_mode ==ROLE_AP){	
 		if ((ret =rw_ipConfig(ipconfig, DHCP_SERVER)) != RW_OK){
