@@ -87,20 +87,50 @@ void test_netWorkTask(void)//≤‚ ‘Wifi¥´ ‰
 //		#define TCPC_TEST//≤‚ ‘TCP clint
 //	#define TCPS_TEST//≤‚ ‘TCP Server
 		 
-		#ifdef  TCPS_TEST
-//				creat_tcpsTask();
-	creat_tcpsTask1();
-		#endif  
-		#ifdef  TCPC_TEST
-				creat_tcpcTask();
-//	creat_tcpcTask1();
-		#endif
-		#ifdef  UDPS_TEST
-				 creat_udpsTask();
-		#endif
-		#ifdef  UDPC_TEST
-				 creat_udpcTask();
-		#endif 
+	switch(Lua_wifi_state.net_protocol){
+	  case NET_TCP_SERVER:
+			  #ifdef  TCPS_TEST
+        //creat_tcpsTask();
+	      creat_tcpsTask1();
+		    #endif  
+			break;
+		case NET_TCP_CLIENT:
+					#ifdef  TCPC_TEST
+//				  creat_tcpcTask();
+          creat_tcpcTask1();
+		      #endif
+			break;
+		case NET_UDP_SERVER:
+					#ifdef  UDPS_TEST
+				  creat_udpsTask();
+		      #endif
+			break;
+		case NET_UDP_CLIENT:
+					#ifdef  UDPC_TEST
+				  creat_udpcTask();
+		      #endif 
+			break;
+		default: //ƒ¨»œ «client
+          #ifdef  TCPC_TEST
+//				  creat_tcpcTask();
+          creat_tcpcTask1();
+		      #endif
+			break;
+	}
+//		#ifdef  TCPS_TEST
+////				creat_tcpsTask();
+//	creat_tcpsTask1();
+//		#endif  
+//		#ifdef  TCPC_TEST
+//				creat_tcpcTask();
+////	creat_tcpcTask1();
+//		#endif
+//		#ifdef  UDPS_TEST
+//				 creat_udpsTask();
+//		#endif
+//		#ifdef  UDPC_TEST
+//				 creat_udpcTask();
+//		#endif 
     
     while(1) {
       
@@ -213,6 +243,7 @@ reconnect:
 			}else
 			{
 //				send_recvCnt -= ret;
+				osDelay(5);
 			}
 		}
 	}

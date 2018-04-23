@@ -252,8 +252,8 @@ static const LUA_REG_TYPE gpioLib[] = {
 		{"OUTOD",NULL},
     {"AN",NULL},
 		
-    {"UP",NULL},
-    {"DOWN",NULL},
+    {"PULLUP",NULL},
+    {"PULLDOWN",NULL},
 		
 		{"HIGH",NULL},
 		{"LOW",NULL},

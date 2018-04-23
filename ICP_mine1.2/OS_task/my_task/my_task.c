@@ -19,7 +19,8 @@
 #include "lua_test.h"
 
 #define SIZE 53
-extern int Lua_wifi_on;//in lua wifi lib
+
+//extern int Lua_wifi_on;//in lua wifi lib
 extern osThreadId appTaskHandle;
 
 /************************ Tasks **************************/
@@ -126,10 +127,10 @@ void StartInquireTask(void const * argument)//不断查询的Task,优先级为High
       AD_rst_handle();		
 		}
 		
-		if(Lua_wifi_on > 0){
+		if(Lua_wifi_state.net_on > 0){
 		    osThreadDef(appTask, StartAppTask, osPriorityAboveNormal, 0, 256);
         appTaskHandle = osThreadCreate(osThread(appTask), NULL);
-			  Lua_wifi_on = -1;//-1表示初始化过了
+			  Lua_wifi_state.net_on = -1;//-1表示初始化过了
 		}
 		osDelay(10);
   }

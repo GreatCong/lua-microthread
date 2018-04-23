@@ -20,7 +20,7 @@
 #define   INVAILD_SOCK_FD     -1
 
 #define   TCPS_TEST   
-//#define   TCPC_TEST  
+#define   TCPC_TEST  
 //#define   UDPS_TEST  
 //#define   UDPC_TEST  
 
