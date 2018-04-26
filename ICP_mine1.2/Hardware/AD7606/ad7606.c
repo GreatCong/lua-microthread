@@ -26,13 +26,13 @@ PA4 -I- BUSY
 PA2 -O- ICP_EN
 */
 
-//配置读取的通道
-//#define AD_CH1 1
+////配置读取的通道
+//#define AD_CH1 1<<0
 //#define AD_CH2 1<<1
 //#define AD_CH3 1<<2
-#define AD_CH4 1<<3
+//#define AD_CH4 1<<3
 
-#define AD_USE_RST 0//新板子有RST功能
+//#define AD_USE_RST 0//新板子有RST功能
 
 #include "my_task.h"//包含一些宏定义
 
@@ -74,6 +74,7 @@ Elemtype myAD_buff[AD_QUEUE_SIZE] = {0};//要根据实际速度更改
 #endif
 
 union _AD7606_BUF AD7606_BUF;
+uint8_t AD_CH_ctrl = AD_CH4;//默认选择CH4
 
 /**functiion**/
 
@@ -135,6 +136,7 @@ void AD_rst_handle(void)
 	//USB handle
 	txCount_usb = 0;
 	//wifi handle
+	DeInit_queue(&myAD_queue);//反初始化队列
 	
 }
 
@@ -302,22 +304,30 @@ void AD7606_handle(void){
 //		txCount++;
 //	}
 	
+	if(AD_CH_ctrl & AD_CH1){
 	#ifdef AD_CH1
 	txBuf_usb[txCount_usb++]=AD7606_BUF.bytebuf[0];
 	txBuf_usb[txCount_usb++]=AD7606_BUF.bytebuf[1];
 	#endif
+	}
+	if(AD_CH_ctrl & AD_CH2){
 	#ifdef AD_CH2
 	txBuf_usb[txCount_usb++]=AD7606_BUF.bytebuf[2];
 	txBuf_usb[txCount_usb++]=AD7606_BUF.bytebuf[3];
 	#endif
+	}
+	if(AD_CH_ctrl & AD_CH3){
 	#ifdef AD_CH3
 	txBuf_usb[txCount_usb++]=AD7606_BUF.bytebuf[4];
 	txBuf_usb[txCount_usb++]=AD7606_BUF.bytebuf[5];
 	#endif
+	}
+	if(AD_CH_ctrl & AD_CH4){
 	#ifdef AD_CH4
 	txBuf_usb[txCount_usb++]=AD7606_BUF.bytebuf[6];
 	txBuf_usb[txCount_usb++]=AD7606_BUF.bytebuf[7];	
 	#endif
+	}
 	
 	if(txCount_usb >= TX_BUF_LEN_USB)
 	{
@@ -339,17 +349,25 @@ void AD7606_handle(void){
 	
 	//wifi发送
 //	channel_data16[0] = AD7606_BUF.bytebuf[0]*255+AD7606_BUF.bytebuf[1];
+	if(AD_CH_ctrl & AD_CH1){
 	#ifdef AD_CH1
 	EnQueue(&myAD_queue,channel_data16[0]);
 	#endif
+	}
+	if(AD_CH_ctrl & AD_CH2){
 	#ifdef AD_CH2
 	EnQueue(&myAD_queue,channel_data16[1]);
 	#endif
+	}
+	if(AD_CH_ctrl & AD_CH3){
 	#ifdef AD_CH3
 	EnQueue(&myAD_queue,channel_data16[2]);
 	#endif
+	}
+	if(AD_CH_ctrl & AD_CH4){
 	#ifdef AD_CH4
 	EnQueue(&myAD_queue,channel_data16[3]);
 	#endif
+	}
 	
 }

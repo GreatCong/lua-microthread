@@ -22,7 +22,7 @@
 
 //extern int Lua_wifi_on;//in lua wifi lib
 extern osThreadId appTaskHandle;
-
+int AD_Conrtol_state = -1;
 /************************ Tasks **************************/
 
 /* StartDefaultTask function */
@@ -113,18 +113,19 @@ void StartInquireTask(void const * argument)//不断查询的Task,优先级为High
   {
 		//在整合的板卡上出现无法接收的情况，将此任务改成osPriorityHigh，能够解决这个问题		
     UsbReceiveData(&buf);
-		if(buf=='Y')
+		if(buf=='Y'|| (AD_Conrtol_state>0))
 		{			
 //			AD_rst_handle();
 			HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
 			buf=0;
-
+     AD_Conrtol_state = -1;
 		}
-		else if(buf=='N') 
+		else if(buf=='N'|| (AD_Conrtol_state==0)) 
 		{
 			HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4);
 			buf=0;
-      AD_rst_handle();		
+      AD_rst_handle();
+			AD_Conrtol_state = -1;
 		}
 		
 		if(Lua_wifi_state.net_on > 0){

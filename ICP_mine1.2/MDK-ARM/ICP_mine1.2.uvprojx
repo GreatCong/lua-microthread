@@ -1272,6 +1272,11 @@
               <FileType>1</FileType>
               <FilePath>..\Hardware\lua_rtos\lua_adds\modules\lwifilib.c</FilePath>
             </File>
+            <File>
+              <FileName>extern_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\lua_rtos\lua_adds\modules\extern_adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

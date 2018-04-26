@@ -157,3 +157,16 @@ int GetQueue_length(QueueArray_type q){
 	//return temp;
 }
 
+// @ function: 
+// @ description:反初始化队列
+// @ input:
+// @ note: queue_clear()
+bool DeInit_queue(QueueArray_type *q){
+	 q->front = 0;
+	 q->rear = 0;
+//	 q->length = 0;
+	
+	return true;
+}
+
+

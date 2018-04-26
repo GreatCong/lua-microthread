@@ -98,4 +98,15 @@ void delay_ms(int count);
 
 //my functions
 void test_netWorkTask(void);//测试Wifi传输
+//ap_sta.c中定义
+extern char* Wifi_AP_SSID;
+extern char* Wifi_AP_PASSWORD;
+extern char* Wifi_STA_SSID;
+extern char* Wifi_STA_PASSWORD;
+extern rw_IpConfig_t Wifi_AP_IPConfig_t;
+
+//tcp_udp_task.c中定义
+extern uint16_t Wifi_TCPC_SERVER_PORT;
+extern uint16_t Wifi_TCPS_SERVER_PORT;
+extern int Wifi_TCPC_SERVER_IP;
 

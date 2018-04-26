@@ -140,7 +140,11 @@ int main(void)
   MX_TIM2_Init();
   MX_SDIO_SD_Init();
   /* USER CODE BEGIN 2 */
+	#if (AD_USE_RST)
+	HAL_GPIO_WritePin(BT_EN_GPIO_Port,BT_EN_Pin,GPIO_PIN_RESET);//不用蓝牙的端口
+	#else
   HAL_GPIO_WritePin(BT_EN_GPIO_Port,BT_EN_Pin,GPIO_PIN_SET);
+	#endif
 	HAL_GPIO_WritePin(WIFI_EN_GPIO_Port,WIFI_EN_Pin,GPIO_PIN_SET);
 	//HAL_GPIO_WritePin(ICP_EN_GPIO_Port,ICP_EN_Pin,GPIO_PIN_SET);
 	AD7606_Init();

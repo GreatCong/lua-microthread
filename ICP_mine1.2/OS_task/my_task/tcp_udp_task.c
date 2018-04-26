@@ -15,8 +15,13 @@
 #define SIZE 53
 //#define MY_TCP_SERVER_PORT 6001
 //#define MY_TCP_SERVER_IP 0xC0A81701 //192.168.23.1 笔记本模拟的
-#define MY_TCP_SERVER_PORT 60090
-#define MY_TCP_SERVER_IP 0xC0A88901 //192.168.137.1 台式机模拟的
+//#define MY_TCPC_SERVER_PORT 60090
+//#define MY_TCPC_SERVER_IP 0xC0A88901 //192.168.137.1 台式机模拟的
+//#define MY_TCPS_SERVER_PORT 25000
+uint16_t Wifi_TCPC_SERVER_PORT = 60090;
+int Wifi_TCPC_SERVER_IP = 0xC0A88901;//192.168.137.1 台式机模拟的
+uint16_t Wifi_TCPS_SERVER_PORT = 25000;
+
 
 //typedef uint8_t Elemtype;
 typedef int16_t Elemtype;	
@@ -177,7 +182,7 @@ reconnect:
 
 		if (app_demo_ctx.tcp_cloud_sockfd == INVAILD_SOCK_FD)
 		{
-      if((ret =RAK_TcpClient(MY_TCP_SERVER_PORT, MY_TCP_SERVER_IP)) >= 0)//192.168.23.1 笔记本模拟的
+      if((ret =RAK_TcpClient(Wifi_TCPC_SERVER_PORT, Wifi_TCPC_SERVER_IP)) >= 0)//192.168.23.1 笔记本模拟的
 			//if((ret =RAK_TcpClient(25001, 0xC0A80389)) >= 0)
 			{
 				app_demo_ctx.tcp_cloud_sockfd = ret;
@@ -301,7 +306,7 @@ server_loop:
     
       if (app_demo_ctx.ltcps_sockfd == INVAILD_SOCK_FD)
       {
-          if((ret =RAK_TcpServer(25000)) >= 0)
+          if((ret =RAK_TcpServer(Wifi_TCPS_SERVER_PORT)) >= 0)
           {
              app_demo_ctx.ltcps_sockfd = ret;
              DPRINTF("RAK_TcpServer sockfd = %u creat \n",app_demo_ctx.ltcps_sockfd);

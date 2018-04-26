@@ -220,10 +220,15 @@
 #else
     #define LINIT_REG_MACHINE
 #endif
-#if LUA_USE_WIFI //包含shell等信息
+#if LUA_USE_WIFI //WIFI
     #define LINIT_REG_WIFI {AUXLIB_WIFI, luaopen_wifi},
 #else
     #define LINIT_REG_WIFI
+#endif
+#if LUA_USE_EXTERN_ADC //AD7606
+    #define LINIT_REG_EXTERN_ADC {AUXLIB_EXTERN_ADC, luaopen_externADC},
+#else
+    #define LINIT_REG_EXTERN_ADC
 #endif
 //add end
 

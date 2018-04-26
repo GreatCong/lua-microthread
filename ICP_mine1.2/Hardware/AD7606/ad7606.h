@@ -4,6 +4,7 @@
 #include "stm32f4xx_hal.h"
 
 //#define AD7606_SOFT_SPI //软件模拟SPI
+#define AD_USE_RST 0//新板子有RST功能
 
 /*
 PC5 -O- OS 0							
@@ -33,6 +34,12 @@ union _AD7606_BUF
 	uint8_t bytebuf[8];
 };
 
+//配置读取的通道
+#define AD_CH1 1<<0
+#define AD_CH2 1<<1
+#define AD_CH3 1<<2
+#define AD_CH4 1<<3
+
 extern union _AD7606_BUF AD7606_BUF;
 
 void AD7606_Init(void);
@@ -42,7 +49,8 @@ void AD_CONVEST_PWM_Init(uint8_t f_khz);
 void AD7606_handle(void);
 void AD7606_rst(void);
 
-void AD_rst_handle(void);//外部调用
+extern void AD_rst_handle(void);//外部调用
+extern uint8_t AD_CH_ctrl;//选择通道
 
 #ifdef AD7606_SOFT_SPI
 void AD7606_GPIO_SPI(void);

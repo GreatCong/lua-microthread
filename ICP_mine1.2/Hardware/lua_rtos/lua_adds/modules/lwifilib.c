@@ -19,6 +19,7 @@
 #include <stdlib.h>
 
 #include "NetDef.h"
+#include "rw_app.h"
 
 Wifi_state Lua_wifi_state = {
   .net_on = WIFI_DEFAULT_STATE,
@@ -44,17 +45,79 @@ static int lwifi_init(lua_State *L)
     return 1;
 }
 
-static int lwifi_setParams(lua_State *L)
+static int lwifi_setMode(lua_State *L)
 {
-	int mode,protocol;
+	int mode;
 	mode=luaL_checkinteger(L,1);
-	protocol=luaL_checkinteger(L,2);
 	
 	  if(Lua_wifi_state.net_on < 0)
 			return luaL_error(L, "wifi is initialized!");
 		else{
 		  Lua_wifi_state.net_mode = mode;
+		}
+	
+    return 0;
+}
+
+static int lwifi_setProtocol(lua_State *L)
+{
+	int protocol;
+	protocol=luaL_checkinteger(L,1);
+	
+	  if(Lua_wifi_state.net_on < 0)
+			return luaL_error(L, "wifi is initialized!");
+		else{
 			Lua_wifi_state.net_protocol = protocol;
+		}
+	
+    return 0;
+}
+
+static int lwifi_setParams(lua_State *L)
+{
+	const char *ssid = luaL_checkstring(L, 1);
+	const char *pass = luaL_checkstring(L, 1);
+	
+	  if(Lua_wifi_state.net_on < 0)
+			return luaL_error(L, "wifi is initialized!");
+		else{
+			if(Lua_wifi_state.net_mode == NET_MODE_AP){
+			  Wifi_AP_SSID = (char*)ssid;
+			  Wifi_AP_PASSWORD = (char*)pass;
+			}
+			else if(Lua_wifi_state.net_mode == NET_MODE_STA){
+			  Wifi_STA_SSID = (char*)ssid;
+			  Wifi_STA_PASSWORD = (char*)pass;
+			}
+		}
+	
+    return 0;
+}
+
+static int lwifi_setAddr(lua_State *L)
+{
+	int port,ip;
+	bool ip_set = false;
+	port=luaL_checkinteger(L,1);
+	
+	if (lua_gettop(L) == 2){
+		ip=luaL_checkinteger(L,2);
+		ip_set = true;
+	}
+	
+	  if(Lua_wifi_state.net_on < 0)
+			return luaL_error(L, "wifi is initialized!");
+		else{
+			if(Lua_wifi_state.net_protocol == NET_TCP_SERVER){
+			 Wifi_TCPS_SERVER_PORT = (uint16_t)port;
+				
+			}
+			else if(Lua_wifi_state.net_protocol == NET_TCP_CLIENT){
+				Wifi_TCPC_SERVER_PORT = (uint16_t)port;
+        if(ip_set){
+				  Wifi_TCPC_SERVER_IP = ip;
+				}
+			}
 		}
 	
     return 0;
@@ -119,6 +182,9 @@ static int lwifi_getParams(lua_State *L)
 
 static const LUA_REG_TYPE wifiLib[] = {
     { LSTRKEY( "init"),			  LFUNCVAL( lwifi_init ) },
+		{ LSTRKEY( "setmode"),			  LFUNCVAL( lwifi_setMode ) },
+		{ LSTRKEY( "setsocket"),			  LFUNCVAL( lwifi_setProtocol ) },
+		{ LSTRKEY( "setaddr"),			  LFUNCVAL( lwifi_setAddr ) },
 		{ LSTRKEY( "setparam"),			  LFUNCVAL( lwifi_setParams ) },
 		{ LSTRKEY( "getparam"),			  LFUNCVAL( lwifi_getParams ) },
 		

@@ -34,6 +34,7 @@ bool IsQueue_full(QueueArray_type q);
 bool ReadQueue_n(QueueArray_type *q,Elemtype *array_print,int num);
 bool ReadQueue_all(QueueArray_type *q,Elemtype *array_print);
 int GetQueue_length(QueueArray_type q);
+bool DeInit_queue(QueueArray_type *q);
 
 
 #endif

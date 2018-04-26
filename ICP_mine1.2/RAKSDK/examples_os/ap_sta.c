@@ -14,10 +14,21 @@
 #include "rw_app.h"
 
 //wifi configs
-#define CONFIG_WIFI_AP_SSID "RAK_AP"
-#define CONFIG_WIFI_AP_PASSWORD "1234567890"
-#define CONFIG_WIFI_STA_SSID "TP_LINK_Soft"
-#define CONFIG_WIFI_STA_PASSWORD "Soft12345678"
+//#define CONFIG_WIFI_AP_SSID "RAK_AP"
+//#define CONFIG_WIFI_AP_PASSWORD "1234567890"
+//#define CONFIG_WIFI_STA_SSID "TP_LINK_Soft"
+//#define CONFIG_WIFI_STA_PASSWORD "Soft12345678"
+char* Wifi_AP_SSID = "RAK_AP";
+char* Wifi_AP_PASSWORD = "1234567890";
+char* Wifi_STA_SSID = "TP_LINK_Soft";
+char* Wifi_STA_PASSWORD = "Soft12345678";
+rw_IpConfig_t Wifi_AP_IPConfig_t={
+	.addr = 0xC0A80701,
+	.mask = 0xFFFFFF00,
+	.gw   = 0xC0A80701,
+	.svr1 = 0xC0A80701
+//	.svr2
+};
 //wifi configs end
 
 RW_APP_CTX         app_demo_ctx;
@@ -93,18 +104,22 @@ int rw_network_startAP(void)
 	conn.role_mode = ROLE_AP;
 //	conn.ssid = "RAK_AP";
 //	conn.psk = "1234567890";
-	conn.ssid = CONFIG_WIFI_AP_SSID;
-	conn.psk = CONFIG_WIFI_AP_PASSWORD;
+	conn.ssid = Wifi_AP_SSID;
+	conn.psk = Wifi_AP_PASSWORD;
 	conn.pmk = NULL;    //set NULL
 	conn.channel = 6;
 	conn.sec_mode = RW_SEC_TYPE_SEC;
 	conn.auth_mode = RW_AUTH_TYPE_AUTO;
 
 	rw_IpConfig_t ipconfig;
-	ipconfig.addr = 0xC0A80701;
-	ipconfig.mask = 0xFFFFFF00;
-	ipconfig.gw   = 0xC0A80701;
-	ipconfig.svr1 = 0xC0A80701;
+//	ipconfig.addr = 0xC0A80701;
+//	ipconfig.mask = 0xFFFFFF00;
+//	ipconfig.gw   = 0xC0A80701;
+//	ipconfig.svr1 = 0xC0A80701;
+	ipconfig.addr = Wifi_AP_IPConfig_t.addr;
+	ipconfig.mask = Wifi_AP_IPConfig_t.mask;
+	ipconfig.gw   = Wifi_AP_IPConfig_t.gw;
+	ipconfig.svr1 = Wifi_AP_IPConfig_t.svr1;
 	ret =rw_network_init(&conn, IP_CONFIG_STATIC, &ipconfig);  
 	if (ret != RW_OK) {
 		DPRINTF("rw_startAP error =%d\r\n", ret);
@@ -124,8 +139,8 @@ int rw_network_startSTA(void)
 	conn.role_mode = ROLE_STA;
 //	conn.ssid = "app-test";//"RAK_Wireless"  "1HEA-PC_Network_4" "mw_raktest""D-Link_DIR-600M"
 //	conn.psk = "aptest12345";
-	conn.ssid = CONFIG_WIFI_STA_SSID;//"RAK_Wireless"  "1HEA-PC_Network_4" "mw_raktest""D-Link_DIR-600M"
-	conn.psk = CONFIG_WIFI_STA_PASSWORD;
+	conn.ssid = Wifi_STA_SSID;//"RAK_Wireless"  "1HEA-PC_Network_4" "mw_raktest""D-Link_DIR-600M"
+	conn.psk = Wifi_STA_PASSWORD;
 	conn.pmk = NULL; //ap_pmk;NULL;
 	conn.channel = 0;
 	conn.sec_mode = RW_SEC_TYPE_SEC;

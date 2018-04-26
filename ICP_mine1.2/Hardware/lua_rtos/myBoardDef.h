@@ -28,6 +28,7 @@
 #define LUA_USE_TMR 1
 #define LUA_USE_MACHINE 1
 #define LUA_USE_WIFI 1
+#define LUA_USE_EXTERN_ADC 1//AD7606
 
 #define LUA_USE_HISTORY 1
 #define LUA_USE_XPRINTF 0
